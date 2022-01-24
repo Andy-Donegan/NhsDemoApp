@@ -12,7 +12,7 @@ namespace NhsDemoApp.Services
 
         public MockDataStoreUser()
         {
-            _user = new User { Id = Guid.NewGuid().ToString(), FirstName = "Cara", LastName = "Smithson", Organisation = "BDCT" };
+            _user = new User { FirstName = "Cara", LastName = "Smithson", Organisation = "BDCT" };
 
         }
 
@@ -23,7 +23,7 @@ namespace NhsDemoApp.Services
             return await Task.FromResult(true);
         }
 
-        public async Task<User> GetUserAsync(string id)
+        public async Task<User> GetUserAsync()
         {
             return await Task.FromResult(_user);
         }

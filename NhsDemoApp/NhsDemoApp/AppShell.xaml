@@ -81,6 +81,9 @@
     <FlyoutItem Title="Home" Icon="icon_home.png">
         <ShellContent Route="HomePage" ContentTemplate="{DataTemplate local:HomePage}" />
     </FlyoutItem>
+    <FlyoutItem Title="Appointments" Icon="icon_feed.png">
+        <ShellContent Route="AppointmentPage" ContentTemplate="{DataTemplate local:AppointmentPage}" />
+    </FlyoutItem>
     <FlyoutItem Title="About" Icon="icon_about.png">
         <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
     </FlyoutItem>

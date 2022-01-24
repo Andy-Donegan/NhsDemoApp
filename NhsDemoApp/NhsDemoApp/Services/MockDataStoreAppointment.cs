@@ -9,19 +9,16 @@ namespace NhsDemoApp.Services
     public class MockDataStoreAppointment : IDataStoreAppointment<Appointment>
     {
         readonly List<Appointment> appointments;
-
+        
         public MockDataStoreAppointment()
         {
             var dueTime = new DateTime(2022, 3, 15, 9, 00, 00);
             string[] contactList = { "John Smith", "Charlie Donegan", "Sarah Sullivan", "Roger Mellee", "William Tyson", "Willow Teale", "Louise McCrone" };
 
-            appointments = new List<Appointment>()
+            appointments = new List<Appointment>();
+            for (int i = 0; i < contactList.Length -1; i++)
             {
-
-            };
-                for (int i = 0; i < contactList.Length; i++)
-            {
-                new Appointment { Id = Guid.NewGuid().ToString(), DueTime = dueTime.AddHours(i), Contact = contactList[i], ArrivalTime = DateTime.Now, IsCompleted = false, User = "", Organisation = "" };
+                appointments.Add(new Appointment { Id = Guid.NewGuid().ToString(), DueTime = dueTime.AddHours(i), Contact = contactList[i], ArrivalTime = null, IsCompleted = false, User = "", Organisation = "" });
             };
         }
 

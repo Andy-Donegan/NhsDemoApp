@@ -17,6 +17,7 @@ namespace NhsDemoApp.Models
         public DateTime? ArrivalTime { get; set; }
         [Required]
         public bool IsCompleted { get; set; }
+        public bool IsLate { get; set; }
         public string User { get; set; }
         public string Organisation { get; set; }
 

@@ -12,20 +12,35 @@
     </ContentPage.ToolbarItems>
 
     <RefreshView x:DataType="local:AppointmentViewModel" Command="{Binding LoadAppointmentsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
-        <CollectionView x:Name="ItemsListView"
+        <CollectionView x:Name="AppointmentsListView"
                 ItemsSource="{Binding Appointments}"
                 SelectionMode="None">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout Padding="10" x:DataType="model:Appointment">
-                        <Label Text="{Binding DueTime}" 
-                            LineBreakMode="NoWrap" 
-                            Style="{DynamicResource ListItemTextStyle}" 
-                            FontSize="16" />
-                        <Label Text="{Binding Contact}" 
-                            LineBreakMode="NoWrap"
-                            Style="{DynamicResource ListItemDetailTextStyle}"
-                            FontSize="13" />
+                        <Label LineBreakMode="WordWrap">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding DueTime, StringFormat='{0:dd MMM - H\\:mm}'}" Style="{DynamicResource ListItemTextStyle}" FontSize="11" />
+                                    <Span Text=" : " Style="{DynamicResource ListItemDetailTextStyle}" FontSize="11" />
+                                    <Span Text="{Binding Contact}" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="11" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding IsLate}" Value="false">
+                                    <Setter Property="TextColor"  Value="Black" />
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding IsLate}" Value="true">
+                                    <Setter Property="TextColor"  Value="Red" />
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding IsCompleted}" Value="false">
+                                    <Setter Property="TextDecorations"  Value="None" />
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding IsCompleted}" Value="true">
+                                    <Setter Property="TextDecorations"  Value="Strikethrough" />
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer 
                                 NumberOfTapsRequired="1"

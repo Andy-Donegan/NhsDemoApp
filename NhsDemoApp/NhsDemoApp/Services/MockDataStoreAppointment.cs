@@ -12,13 +12,29 @@ namespace NhsDemoApp.Services
         
         public MockDataStoreAppointment()
         {
-            var dueTime = new DateTime(2022, 3, 15, 9, 00, 00);
-            string[] contactList = { "John Smith", "Charlie Donegan", "Sarah Sullivan", "Roger Mellee", "William Tyson", "Willow Teale", "Louise McCrone" };
+            //var dueTime = new DateTime(2022, 3, 15, 9, 00, 00);
+            var isLate = false;
+            var timeNow = DateTime.Now;
+            var dueTime = DateTime.Now;
+            var timeSpan = new TimeSpan(9, 0, 0);
+            dueTime = dueTime.Date + timeSpan;
+            string[] contactList = { "John Smith", "Charlie Donegan", "Sure Start Shipley", "Sarah Sullivan", "Roger Mellee", "New Mill" , "William Tyson", "Willow Teale", "Jacobs Well", "Louise McCrone" };
+            var random = new Random();
 
             appointments = new List<Appointment>();
-            for (int i = 0; i < contactList.Length -1; i++)
+            for (int i = 0; i < contactList.Length; i++)
             {
-                appointments.Add(new Appointment { Id = Guid.NewGuid().ToString(), DueTime = dueTime.AddHours(i), Contact = contactList[i], ArrivalTime = null, IsCompleted = false, User = "", Organisation = "" });
+                var timeCheck = dueTime.AddHours(i);
+                if(timeNow >= timeCheck)
+                {
+                    isLate = true;
+                }
+                else
+                {
+                    isLate = false;
+                }
+                var randomBool = random.Next(2) == 1;
+                appointments.Add(new Appointment { Id = Guid.NewGuid().ToString(), DueTime = timeCheck, Contact = contactList[i], ArrivalTime = null, IsCompleted = randomBool, IsLate = isLate, User = "", Organisation = "" });
             };
         }
 

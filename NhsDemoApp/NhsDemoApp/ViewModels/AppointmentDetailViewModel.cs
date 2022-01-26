@@ -10,7 +10,36 @@ namespace NhsDemoApp.ViewModels
     [QueryProperty(nameof(AppointmentId), nameof(AppointmentId))]
     public class AppointmentDetailViewModel : BaseViewModel
     {
-        public string appointmentId;
+
+        private string appointmentId;
+        private DateTime dueTime;
+        private string contact;
+        private bool isCompleted;
+
+        public string Id { get;set; }
+
+        public AppointmentDetailViewModel()
+        {
+            Title = "Appointment Details";
+        }
+
+        public DateTime DueTime
+        {
+            get => dueTime;
+            set => SetProperty(ref dueTime, value);
+        }
+
+        public string Contact
+        {
+            get => contact;
+            set => SetProperty(ref contact, value);
+        }
+
+        public bool IsCompleted
+        {
+            get => isCompleted;
+            set => SetProperty(ref isCompleted, value);
+        }
 
         public string AppointmentId
         {
@@ -30,8 +59,10 @@ namespace NhsDemoApp.ViewModels
             try
             {
                 var appointment = await DataStoreAppointment.GetAppointmentAsync(appointmentId);
-                //fill in other fields.
-
+                Id = appointment.Id;
+                DueTime = appointment.DueTime;
+                Contact = appointment.Contact;
+                IsCompleted = appointment.IsCompleted;
             }
             catch (Exception ex)
             {

@@ -78,15 +78,13 @@ namespace NhsDemoApp.ViewModels
         {
             if (appointment == null)
                 return;
-            return;
-            //await Shell.Current.GoToAsync($"{nameof(AppointmentDetailPage)}?{nameof(AppointmentDetailViewModel.AppointmentId)}={appointment.Id}");
+            await Shell.Current.GoToAsync($"{nameof(AppointmentDetailPage)}?{nameof(AppointmentDetailViewModel.AppointmentId)}={appointment.Id}");
         }
         async void OnAppointmentSelected2(Appointment appointment)
         {
             if (appointment == null)
                 return;
-            return;
-            //await Shell.Current.GoToAsync($"{nameof(AppointmentDetailPage)}?{nameof(AppointmentDetailViewModel.AppointmentId)}={appointment.Id}");
+            await Shell.Current.GoToAsync($"{nameof(AppointmentDetailPage)}?{nameof(AppointmentDetailViewModel.AppointmentId)}={appointment.Id}");
         }
 
     }

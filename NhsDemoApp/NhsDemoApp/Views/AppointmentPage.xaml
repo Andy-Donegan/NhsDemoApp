@@ -7,7 +7,11 @@
              xmlns:local="clr-namespace:NhsDemoApp.ViewModels"  
              xmlns:model="clr-namespace:NhsDemoApp.Models"  
              x:Name="BrowseAppointmentsPage">
-
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <xct:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Command="{Binding AddAppointmentCommand}" />
     </ContentPage.ToolbarItems>
@@ -87,12 +91,7 @@
                                     </TapGestureRecognizer>
                                 </Label.GestureRecognizers>
                             </Label>
-                            <Switch Grid.Column="2" IsToggled ="{Binding IsCompleted}" HorizontalOptions="Center" Margin="1">
-                                <Switch.Behaviors>
-                                    <xct:EventToCommandBehavior
-                                        EventName="Toggled"
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:AppointmentViewModel}}, Path=AppointmentTapped}"/>
-                                </Switch.Behaviors>
+                            <Switch Grid.Column="2" IsToggled ="{Binding IsCompleted, Mode=TwoWay}" HorizontalOptions="Center" Margin="1">
                             </Switch>
                             <CheckBox Grid.Column="3" IsChecked ="{Binding OnSite}" HorizontalOptions="Center" Margin="1">
                             </CheckBox>

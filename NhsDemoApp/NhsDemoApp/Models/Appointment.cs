@@ -16,7 +16,18 @@ namespace NhsDemoApp.Models
         [DataType(DataType.Date)]
         public DateTime? ArrivalTime { get; set; }
         [Required]
-        public bool IsCompleted { get; set; }
+        bool _IsCompleted;
+        public bool IsCompleted
+        {
+            get
+            {
+                return _IsCompleted;
+            }
+            set
+            {
+                _IsCompleted = value;
+            }
+        }
         public bool IsLate { get; set; }
         public bool OnSite { get; set; }
         public string User { get; set; }

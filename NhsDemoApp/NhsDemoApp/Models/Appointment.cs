@@ -18,6 +18,7 @@ namespace NhsDemoApp.Models
         [Required]
         public bool IsCompleted { get; set; }
         public bool IsLate { get; set; }
+        public bool OnSite { get; set; }
         public string User { get; set; }
         public string Organisation { get; set; }
 

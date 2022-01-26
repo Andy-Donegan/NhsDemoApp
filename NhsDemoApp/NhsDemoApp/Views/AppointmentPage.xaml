@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NhsDemoApp.Views.AppointmentPage"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              Title="{Binding Title}"
              xmlns:local="clr-namespace:NhsDemoApp.ViewModels"  
              xmlns:model="clr-namespace:NhsDemoApp.Models"  
@@ -12,46 +13,94 @@
     </ContentPage.ToolbarItems>
 
     <RefreshView x:DataType="local:AppointmentViewModel" Command="{Binding LoadAppointmentsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
-        <CollectionView x:Name="AppointmentsListView"
-                ItemsSource="{Binding Appointments}"
-                SelectionMode="None">
-            <CollectionView.ItemTemplate>
+        <ListView x:Name="AppointmentsListView"
+                  ItemsSource="{Binding Appointments}"
+                  SelectionMode="None">
+            <ListView.Header>
+                <Grid Margin="0,10,0,0"
+                      ColumnSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition Width="0.5*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Time" HorizontalOptions="Fill"  Grid.Column="0" FontSize="Default" HorizontalTextAlignment="Center" Margin="1"/>
+                    <Label Text="Contact" HorizontalOptions="Fill" Grid.Column="1" FontSize="Default" HorizontalTextAlignment="Center" Margin="1"/>
+                    <Label Text="Done" HorizontalOptions="Fill" Grid.Column="2" FontSize="Default" HorizontalTextAlignment="Center" Margin="1"/>
+                    <Label Text="On Site" HorizontalOptions="Fill" Grid.Column="3" FontSize="Default" HorizontalTextAlignment="Center" Margin="1"/>
+                </Grid>
+            </ListView.Header>
+            <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout Padding="10" x:DataType="model:Appointment">
-                        <Label LineBreakMode="WordWrap">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{Binding DueTime, StringFormat='{0:dd MMM - H\\:mm}'}" Style="{DynamicResource ListItemTextStyle}" FontSize="11" />
-                                    <Span Text=" : " Style="{DynamicResource ListItemDetailTextStyle}" FontSize="11" />
-                                    <Span Text="{Binding Contact}" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="11" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                            <Label.Triggers>
-                                <DataTrigger TargetType="Label" Binding="{Binding IsLate}" Value="false">
-                                    <Setter Property="TextColor"  Value="Black" />
-                                </DataTrigger>
-                                <DataTrigger TargetType="Label" Binding="{Binding IsLate}" Value="true">
-                                    <Setter Property="TextColor"  Value="Red" />
-                                </DataTrigger>
-                                <DataTrigger TargetType="Label" Binding="{Binding IsCompleted}" Value="false">
-                                    <Setter Property="TextDecorations"  Value="None" />
-                                </DataTrigger>
-                                <DataTrigger TargetType="Label" Binding="{Binding IsCompleted}" Value="true">
-                                    <Setter Property="TextDecorations"  Value="Strikethrough" />
-                                </DataTrigger>
-                            </Label.Triggers>
-                        </Label>
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer 
+                    <ViewCell x:DataType="model:Appointment">
+                        <Grid ColumnSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="0.5*" />
+                                <ColumnDefinition Width="0.5*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Text ="{Binding DueTime, StringFormat='{0:dd MMM - H\\:mm}'}" FontSize="11" HorizontalTextAlignment="Center" Margin="1" >
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding IsLate}" Value="false">
+                                        <Setter Property="TextColor" Value="Black" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding IsLate}" Value="true">
+                                        <Setter Property="TextColor" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding IsCompleted}" Value="false">
+                                        <Setter Property="TextDecorations" Value="None" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding IsCompleted}" Value="true">
+                                        <Setter Property="TextDecorations" Value="Strikethrough" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer 
                                 NumberOfTapsRequired="1"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:AppointmentViewModel}}, Path=ItemTapped}"		
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:AppointmentViewModel}}, Path=AppointmentTapped}"		
                                 CommandParameter="{Binding .}">
-                            </TapGestureRecognizer>
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
+                                    </TapGestureRecognizer>
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <Label Grid.Column="1" Text ="{Binding Contact}" HorizontalOptions="Fill" FontSize="11" HorizontalTextAlignment="Center" Margin="1">
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label" Binding="{Binding IsLate}" Value="false">
+                                        <Setter Property="TextColor"  Value="Black" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding IsLate}" Value="true">
+                                        <Setter Property="TextColor"  Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding IsCompleted}" Value="false">
+                                        <Setter Property="TextDecorations"  Value="None" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="Label" Binding="{Binding IsCompleted}" Value="true">
+                                        <Setter Property="TextDecorations"  Value="Strikethrough" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                NumberOfTapsRequired="1"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:AppointmentViewModel}}, Path=AppointmentTapped}"		
+                                CommandParameter="{Binding .}">
+                                    </TapGestureRecognizer>
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <Switch Grid.Column="2" IsToggled ="{Binding IsCompleted}" HorizontalOptions="Center" Margin="1">
+                                <Switch.Behaviors>
+                                    <xct:EventToCommandBehavior
+                                        EventName="Toggled"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:AppointmentViewModel}}, Path=AppointmentTapped}"/>
+                                </Switch.Behaviors>
+                            </Switch>
+                            <CheckBox Grid.Column="3" IsChecked ="{Binding OnSite}" HorizontalOptions="Center" Margin="1">
+                            </CheckBox>
+                        </Grid>
+                    </ViewCell>
                 </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+            </ListView.ItemTemplate>
+        </ListView>
     </RefreshView>
 
 

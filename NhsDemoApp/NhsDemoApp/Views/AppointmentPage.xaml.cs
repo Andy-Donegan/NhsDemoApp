@@ -17,7 +17,6 @@ namespace NhsDemoApp.Views
         public AppointmentPage()
         {
             InitializeComponent();
-
             BindingContext = _viewModel = new AppointmentViewModel();
         }
 
@@ -26,5 +25,6 @@ namespace NhsDemoApp.Views
             base.OnAppearing();
             _viewModel.OnAppearing();
         }
+
     }
 }

@@ -17,6 +17,7 @@ namespace NhsDemoApp.ViewModels
         public Command LoadAppointmentsCommand { get; }
         public Command AddAppointmentCommand { get; }
         public Command<Appointment> AppointmentTapped { get; }
+        public Command<Appointment> AppointmentTapped2 { get; }
 
         public AppointmentViewModel()
         {
@@ -25,6 +26,7 @@ namespace NhsDemoApp.ViewModels
             LoadAppointmentsCommand = new Command(async () => await ExecuteLoadAppointmentsCommand());
 
             AppointmentTapped = new Command<Appointment>(OnAppointmentSelected);
+            AppointmentTapped2 = new Command<Appointment>(OnAppointmentSelected2);
             AddAppointmentCommand = new Command(OnAddAppointment);
         }
 
@@ -61,7 +63,7 @@ namespace NhsDemoApp.ViewModels
         {
             get => _selectedAppointment;
             set
-            {
+            {                
                 SetProperty(ref _selectedAppointment, value);
                 OnAppointmentSelected(value);
             }
@@ -76,8 +78,15 @@ namespace NhsDemoApp.ViewModels
         {
             if (appointment == null)
                 return;
-
-            await Shell.Current.GoToAsync($"{nameof(AppointmentDetailPage)}?{nameof(AppointmentDetailViewModel.AppointmentId)}={appointment.Id}");
+            return;
+            //await Shell.Current.GoToAsync($"{nameof(AppointmentDetailPage)}?{nameof(AppointmentDetailViewModel.AppointmentId)}={appointment.Id}");
+        }
+        async void OnAppointmentSelected2(Appointment appointment)
+        {
+            if (appointment == null)
+                return;
+            return;
+            //await Shell.Current.GoToAsync($"{nameof(AppointmentDetailPage)}?{nameof(AppointmentDetailViewModel.AppointmentId)}={appointment.Id}");
         }
 
     }

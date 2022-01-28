@@ -13,10 +13,17 @@ namespace NhsDemoApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AppointmentDetailPage : ContentPage
     {
+        AppointmentDetailViewModel _viewModel;
         public AppointmentDetailPage()
         {
             InitializeComponent();
-            BindingContext = new AppointmentDetailViewModel();
+            BindingContext = _viewModel = new AppointmentDetailViewModel();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            _viewModel.OnAppearing();
         }
     }
 }

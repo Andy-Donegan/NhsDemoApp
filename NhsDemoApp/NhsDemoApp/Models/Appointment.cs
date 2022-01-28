@@ -13,8 +13,8 @@ namespace NhsDemoApp.Models
         public DateTime DueTime { get; set; }
         [Required]
         public string Contact { get; set; }
-        [DataType(DataType.Date)]
-        public DateTime? ArrivalTime { get; set; }
+        public TimeSpan? ArrivalTime { get; set; }
+        public TimeSpan? DepartureTime { get; set; }
         [Required]
         bool _IsCompleted;
         public bool IsCompleted

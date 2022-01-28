@@ -35,7 +35,7 @@ namespace NhsDemoApp.Services
                     isLate = false;
                 }
                 var randomBool = random.Next(2) == 1;
-                appointments.Add(new Appointment { Id = Guid.NewGuid().ToString(), DueTime = timeCheck, Contact = contactList[i], ArrivalTime = null, IsCompleted = randomBool, IsLate = isLate, OnSite = false , User = "", Organisation = "" });
+                appointments.Add(new Appointment { Id = Guid.NewGuid().ToString(), DueTime = timeCheck, Contact = contactList[i], ArrivalTime = null, DepartureTime= null, IsCompleted = randomBool, IsLate = isLate, OnSite = false , User = "", Organisation = "" });
             };
         }
 

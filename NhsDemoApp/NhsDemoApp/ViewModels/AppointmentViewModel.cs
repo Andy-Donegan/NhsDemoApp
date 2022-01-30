@@ -17,7 +17,6 @@ namespace NhsDemoApp.ViewModels
         public Command LoadAppointmentsCommand { get; }
         public Command AddAppointmentCommand { get; }
         public Command<Appointment> AppointmentTapped { get; }
-        public Command<Appointment> AppointmentTapped2 { get; }
 
         public AppointmentViewModel()
         {
@@ -26,7 +25,6 @@ namespace NhsDemoApp.ViewModels
             LoadAppointmentsCommand = new Command(async () => await ExecuteLoadAppointmentsCommand());
 
             AppointmentTapped = new Command<Appointment>(OnAppointmentSelected);
-            AppointmentTapped2 = new Command<Appointment>(OnAppointmentSelected2);
             AddAppointmentCommand = new Command(OnAddAppointment);
         }
 
@@ -40,6 +38,23 @@ namespace NhsDemoApp.ViewModels
                 var appointments = await DataStoreAppointment.GetAppointmentsAsync(true);
                 foreach (Appointment appointment in appointments)
                 {
+                    if (appointment.ArrivalTime != null && appointment.DepartureTime != null)
+                    {
+                        appointment.IsCompleted = true;
+                        appointment.TimesRequired = false;
+                    }
+                    else
+                    {
+                        appointment.TimesRequired = true;
+                    }
+                    if(appointment.DueTime >= DateTime.Now && appointment.IsCompleted != true)
+                    {
+                        appointment.IsLate = true;
+                    }
+                    else
+                    {
+                        appointment.IsLate = false;
+                    }
                     Appointments.Add(appointment);
                 }
             }
@@ -57,6 +72,7 @@ namespace NhsDemoApp.ViewModels
         {
             IsBusy = true;
             SelectedAppointment = null;
+            
         }
 
         public Appointment SelectedAppointment
@@ -80,12 +96,5 @@ namespace NhsDemoApp.ViewModels
                 return;
             await Shell.Current.GoToAsync($"{nameof(AppointmentDetailPage)}?{nameof(AppointmentDetailViewModel.AppointmentId)}={appointment.Id}");
         }
-        async void OnAppointmentSelected2(Appointment appointment)
-        {
-            if (appointment == null)
-                return;
-            await Shell.Current.GoToAsync($"{nameof(AppointmentDetailPage)}?{nameof(AppointmentDetailViewModel.AppointmentId)}={appointment.Id}");
-        }
-
     }
 }

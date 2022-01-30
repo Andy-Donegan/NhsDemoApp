@@ -12,7 +12,6 @@ namespace NhsDemoApp.Services
         
         public MockDataStoreAppointment()
         {
-            var timeNow = DateTime.Now;
             var dueTime = DateTime.Now;
             var timeSpan = new TimeSpan(9, 0, 0);
             dueTime = dueTime.Date + timeSpan;
@@ -23,19 +22,8 @@ namespace NhsDemoApp.Services
             appointments = new List<Appointment>();
             for (int i = 0; i < contactList.Length; i++)
             {
-                var timeCheck = dueTime.AddHours(i);
-                //var dueTime = new DateTime(2022, 3, 15, 9, 00, 00);
-
-                if (timeNow >= timeCheck)
-                {
-                    isLate = true;
-                }
-                else
-                {
-                    isLate = false;
-                }
                 var randomBool = random.Next(2) == 1;
-                appointments.Add(new Appointment { Id = Guid.NewGuid().ToString(), DueTime = timeCheck, Contact = contactList[i], ArrivalTime = null, DepartureTime= null, IsCompleted = randomBool, IsLate = isLate, OnSite = false , User = "", Organisation = "" });
+                appointments.Add(new Appointment { Id = Guid.NewGuid().ToString(), DueTime = dueTime.AddHours(i), Contact = contactList[i], ArrivalTime = null, DepartureTime= null, IsCompleted = randomBool, IsLate = false, OnSite = false , User = "", Organisation = "", TimesRequired = true });
             };
         }
 

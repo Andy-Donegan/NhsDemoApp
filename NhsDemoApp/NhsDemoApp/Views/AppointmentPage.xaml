@@ -63,13 +63,13 @@
                                     </TapGestureRecognizer>
                                 </Label.GestureRecognizers>
                             </Label>
-                            <Label Grid.Column="1" Text ="{Binding Contact}" HorizontalOptions="Fill" FontSize="11" HorizontalTextAlignment="Center" Margin="1">
+                            <Label x:Name="testLabel" Grid.Column="1" Text ="{Binding Contact}" HorizontalOptions="Fill" FontSize="11" HorizontalTextAlignment="Center" Margin="1">
                                 <Label.Triggers>
-                                    <DataTrigger TargetType="Label" Binding="{Binding IsLate}" Value="false">
+                                    <DataTrigger TargetType="Label" Binding="{Binding TimesRequired}" Value="false">
                                         <Setter Property="TextColor"  Value="Black" />
                                     </DataTrigger>
-                                    <DataTrigger TargetType="Label" Binding="{Binding IsLate}" Value="true">
-                                        <Setter Property="TextColor"  Value="Red" />
+                                    <DataTrigger TargetType="Label" Binding="{Binding TimesRequired}" Value="true">
+                                        <Setter Property="TextColor"  Value="Green" />
                                     </DataTrigger>
                                     <DataTrigger TargetType="Label" Binding="{Binding IsCompleted}" Value="false">
                                         <Setter Property="TextDecorations"  Value="None" />
@@ -88,8 +88,10 @@
                             </Label>
                             <Switch Grid.Column="2" IsToggled ="{Binding IsCompleted, Mode=TwoWay}" HorizontalOptions="Center" Margin="1">
                             </Switch>
-                            <CheckBox Grid.Column="3" IsChecked ="{Binding OnSite}" HorizontalOptions="Center" Margin="1">
-                            </CheckBox>
+                            <Label Grid.Column="3" Text ="{Binding ArrivalTime}" HorizontalOptions="Fill" FontSize="11" HorizontalTextAlignment="Center" Margin="1">
+                            </Label>
+                            <!--<CheckBox Grid.Column="3" IsChecked ="{Binding OnSite}" HorizontalOptions="Center" Margin="1">
+                            </CheckBox>-->
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

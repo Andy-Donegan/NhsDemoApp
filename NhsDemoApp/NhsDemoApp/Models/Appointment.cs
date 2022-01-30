@@ -32,6 +32,7 @@ namespace NhsDemoApp.Models
         public bool OnSite { get; set; }
         public string User { get; set; }
         public string Organisation { get; set; }
+        public bool TimesRequired { get; set; }
 
     }
 }

@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Essentials;
 
 namespace NhsDemoApp.ViewModels
 {
@@ -15,8 +16,6 @@ namespace NhsDemoApp.ViewModels
         private string appointmentId;
         public ObservableCollection<Appointment> Appointments { get; }
         public Command LoadAppointmentCommand { get; }
-        public Command<Appointment> AppointmentTapped { get; }
-        public Command<Appointment> AppointmentTapped2 { get; }
 
         public AppointmentDetailViewModel()
         {
@@ -67,21 +66,5 @@ namespace NhsDemoApp.ViewModels
             IsBusy = true;
         }
 
-        //public Appointment SelectedAppointment
-        //{
-        //    get => _selectedAppointment;
-        //    set
-        //    {
-        //        SetProperty(ref _selectedAppointment, value);
-        //        OnAppointmentSelected(value);
-        //    }
-        //}
-
-        //async void OnAppointmentSelected(Appointment appointment)
-        //{
-        //    if (appointment == null)
-        //        return;
-        //    await Shell.Current.GoToAsync($"{nameof(AppointmentDetailPage)}?{nameof(AppointmentDetailViewModel.AppointmentId)}={appointment.Id}");
-        //}
     }
 }

@@ -1,6 +1,7 @@
 ﻿using NhsDemoApp.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,8 +13,7 @@ namespace NhsDemoApp.ViewModels
     public class AppointmentDetailViewModel : BaseViewModel
     {
         private string appointmentId;
-        private Appointment _selectedAppointment;
-        public Appointment Appointment { get; set; }
+        public ObservableCollection<Appointment> Appointments { get; }
         public Command LoadAppointmentCommand { get; }
         public Command<Appointment> AppointmentTapped { get; }
         public Command<Appointment> AppointmentTapped2 { get; }
@@ -21,10 +21,8 @@ namespace NhsDemoApp.ViewModels
         public AppointmentDetailViewModel()
         {
             Title = "Appointment Details";
-            Appointment = new Appointment();
+            Appointments = new ObservableCollection<Appointment>();
             LoadAppointmentCommand = new Command(async () => await ExecuteLoadAppointmentCommand());
-
-            //AppointmentTapped = new Command<Appointment>(OnAppointmentSelected);
         }
         public string AppointmentId
         {
@@ -35,7 +33,6 @@ namespace NhsDemoApp.ViewModels
             set
             {
                 appointmentId = value;
-                //Task task = ExecuteLoadAppointmentCommand();
             }
         }
 
@@ -45,7 +42,15 @@ namespace NhsDemoApp.ViewModels
 
             try
             {
-                Appointment = await DataStoreAppointment.GetAppointmentAsync(appointmentId);
+                Appointments.Clear();
+                var appointments = await DataStoreAppointment.GetAppointmentsAsync(true);
+                foreach (Appointment appointment in appointments)
+                {
+                    if (appointment.Id == appointmentId)
+                    {
+                        Appointments.Add(appointment);
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -60,7 +65,6 @@ namespace NhsDemoApp.ViewModels
         public void OnAppearing()
         {
             IsBusy = true;
-            //SelectedAppointment = null;
         }
 
         //public Appointment SelectedAppointment

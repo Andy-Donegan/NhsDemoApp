@@ -27844,25 +27844,28 @@ namespace NhsDemoApp.Droid
 			public const int notify_panel_notification_icon_bg = 2131165350;
 			
 			// aapt resource value: 0x7F0700A7
-			public const int preference_list_divider_material = 2131165351;
+			public const int play_store_512 = 2131165351;
 			
 			// aapt resource value: 0x7F0700A8
-			public const int splash_logo = 2131165352;
+			public const int preference_list_divider_material = 2131165352;
 			
 			// aapt resource value: 0x7F0700A9
-			public const int splash_screen = 2131165353;
+			public const int splash_logo = 2131165353;
 			
 			// aapt resource value: 0x7F0700AA
-			public const int test_custom_background = 2131165354;
+			public const int splash_screen = 2131165354;
 			
 			// aapt resource value: 0x7F0700AB
-			public const int tooltip_frame_dark = 2131165355;
+			public const int test_custom_background = 2131165355;
 			
 			// aapt resource value: 0x7F0700AC
-			public const int tooltip_frame_light = 2131165356;
+			public const int tooltip_frame_dark = 2131165356;
 			
 			// aapt resource value: 0x7F0700AD
-			public const int xamarin_logo = 2131165357;
+			public const int tooltip_frame_light = 2131165357;
+			
+			// aapt resource value: 0x7F0700AE
+			public const int xamarin_logo = 2131165358;
 			
 			static Drawable()
 			{
@@ -30025,6 +30028,15 @@ namespace NhsDemoApp.Droid
 			
 			// aapt resource value: 0x7F0C0002
 			public const int launcher_foreground = 2131492866;
+			
+			// aapt resource value: 0x7F0C0003
+			public const int nhs_blue_icon = 2131492867;
+			
+			// aapt resource value: 0x7F0C0004
+			public const int nhs_blue_icon_background = 2131492868;
+			
+			// aapt resource value: 0x7F0C0005
+			public const int nhs_blue_icon_foreground = 2131492869;
 			
 			static Mipmap()
 			{

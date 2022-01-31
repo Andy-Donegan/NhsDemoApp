@@ -16,7 +16,7 @@ namespace NhsDemoApp.Services
             var timeSpan = new TimeSpan(9, 0, 0);
             dueTime = dueTime.Date + timeSpan;
             bool isLate;
-            string[] contactList = { "John Smith", "Charlie Donegan", "Sure Start Shipley", "Sarah Sullivan", "Roger Mellee", "New Mill" , "William Tyson", "Willow Teale", "Jacobs Well", "Louise McCrone" };
+            string[] contactList = { "Lewis Smithen", "Charlie Donegan", "Sure Start Shipley", "Sarah Sullivan", "Roger Mellee", "New Mill" , "William Tyson", "Willow Teale", "Jacobs Well", "Louise McCrone" };
             var random = new Random();
 
             appointments = new List<Appointment>();

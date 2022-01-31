@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace NhsDemoApp
 {
-  [Activity(Label = "NhsDemoApp", Icon = "@drawable/nhsLogoUkBlue", Theme = "@style/MyTheme.Splash", MainLauncher = true, NoHistory = true)]
+  [Activity(Label = "NhsDemoApp", Icon = "@mipmap/nhs_blue_icon", Theme = "@style/MyTheme.Splash", MainLauncher = true, NoHistory = true)]
     public class SplashActivity : AppCompatActivity
     {
         static readonly string TAG = "X:" + typeof(SplashActivity).Name;

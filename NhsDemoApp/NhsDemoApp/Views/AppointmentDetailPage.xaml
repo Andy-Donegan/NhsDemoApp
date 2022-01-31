@@ -26,7 +26,6 @@
                         <TimePicker Time="{Binding ArrivalTime}" Format="t" FontSize="Small"/>
                         <Label Text="Departure Time" FontSize="Medium" />
                         <TimePicker Time="{Binding DepartureTime}" Format="t" FontSize="Small"/>
-
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

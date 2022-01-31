@@ -10,7 +10,7 @@ namespace NhsDemoApp.ViewModels
         public AboutViewModel()
         {
             Title = "About";
-            OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://aka.ms/xamarin-quickstart"));
+            OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://mvcdemoajd.azurewebsites.net/Home/About"));
         }
 
         public ICommand OpenWebCommand { get; }

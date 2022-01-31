@@ -11,8 +11,6 @@ namespace NhsDemoApp
         public AppShell()
         {
             InitializeComponent();
-            Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
-            Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
             Routing.RegisterRoute(nameof(AppointmentDetailPage), typeof(AppointmentDetailPage));
             Routing.RegisterRoute(nameof(NewAppointmentPage), typeof(NewAppointmentPage));
         }

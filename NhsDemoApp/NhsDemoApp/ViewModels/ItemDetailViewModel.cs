@@ -50,7 +50,7 @@ namespace NhsDemoApp.ViewModels
             }
             catch (Exception)
             {
-                Debug.WriteLine("Failed to Load Item");
+                Console.WriteLine("Failed to Load Item");
             }
         }
     }

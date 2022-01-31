@@ -71,7 +71,8 @@ namespace NhsDemoApp.ViewModels
 
         private async void OnLoadMap(object obj)
         {
-            await Shell.Current.GoToAsync(nameof(MapPage));
+            //await Shell.Current.GoToAsync(nameof(MapPage));
+            await Shell.Current.GoToAsync($"{nameof(MapPage)}?{nameof(MapPageViewModel.AppointmentId)}={AppointmentId}");
         }
 
     }

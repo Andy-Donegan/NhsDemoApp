@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NhsDemoApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,9 @@ namespace NhsDemoApp.Views
 	{
 		public MapPage ()
 		{
+			BindingContext = new MapPageViewModel();
 			InitializeComponent ();
 		}
+
 	}
 }

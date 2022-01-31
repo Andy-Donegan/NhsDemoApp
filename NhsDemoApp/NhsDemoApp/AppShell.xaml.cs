@@ -12,7 +12,7 @@ namespace NhsDemoApp
         {
             InitializeComponent();
             Routing.RegisterRoute(nameof(AppointmentDetailPage), typeof(AppointmentDetailPage));
-            Routing.RegisterRoute(nameof(NewAppointmentPage), typeof(NewAppointmentPage));
+            Routing.RegisterRoute(nameof(MapPage), typeof(MapPage));
         }
 
     }

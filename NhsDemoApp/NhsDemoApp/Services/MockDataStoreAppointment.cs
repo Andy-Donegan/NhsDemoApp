@@ -22,7 +22,7 @@ namespace NhsDemoApp.Services
             for (int i = 0; i < contactList.Length; i++)
             {
                 var randomBool = random.Next(2) == 1;
-                appointments.Add(new Appointment { Id = Guid.NewGuid().ToString(), DueTime = dueTime.AddHours(i), Contact = contactList[i], ArrivalTime = null, DepartureTime= null, IsCompleted = randomBool, IsLate = false, OnSite = false , User = "", Organisation = "", TimesRequired = true });
+                appointments.Add(new Appointment { Id = Guid.NewGuid().ToString(), DueTime = dueTime.AddHours(i), Contact = contactList[i], ArrivalTime = null, DepartureTime= null, IsCompleted = randomBool, IsLate = false, OnSite = false , User = "", Organisation = "", TimesRequired = true, Latitude = 53.8252616, Longitude = -1.7184611 });
             };
         }
 

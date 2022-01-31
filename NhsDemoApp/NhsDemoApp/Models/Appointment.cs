@@ -33,6 +33,8 @@ namespace NhsDemoApp.Models
         public string User { get; set; }
         public string Organisation { get; set; }
         public bool TimesRequired { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
 
     }
 }

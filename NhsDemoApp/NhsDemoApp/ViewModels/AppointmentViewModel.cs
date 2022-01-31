@@ -2,9 +2,11 @@
 using NhsDemoApp.Services;
 using NhsDemoApp.Views;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace NhsDemoApp.ViewModels
@@ -12,10 +14,11 @@ namespace NhsDemoApp.ViewModels
     public class AppointmentViewModel : BaseViewModel
     {
         private Appointment _selectedAppointment;
-
+        public Command ExportToExcelCommand { private set; get; }
+        private ExcelService excelService;
         public ObservableCollection<Appointment> Appointments { get; }
         public Command LoadAppointmentsCommand { get; }
-        public Command AddAppointmentCommand { get; }
+        //public Command AddAppointmentCommand { get; }
         public Command<Appointment> AppointmentTapped { get; }
 
         public AppointmentViewModel()
@@ -25,7 +28,10 @@ namespace NhsDemoApp.ViewModels
             LoadAppointmentsCommand = new Command(async () => await ExecuteLoadAppointmentsCommand());
 
             AppointmentTapped = new Command<Appointment>(OnAppointmentSelected);
-            AddAppointmentCommand = new Command(OnAddAppointment);
+            //AddAppointmentCommand = new Command(OnAddAppointment);
+
+            ExportToExcelCommand = new Command(async () => await ExportToExcel());
+            excelService = new ExcelService();
         }
 
         async Task ExecuteLoadAppointmentsCommand()
@@ -85,16 +91,59 @@ namespace NhsDemoApp.ViewModels
             }
         }
 
-        private async void OnAddAppointment(object obj)
-        {
-            await Shell.Current.GoToAsync(nameof(NewAppointmentPage));
-        }
+        //private async void OnAddAppointment(object obj)
+        //{
+        //    await Shell.Current.GoToAsync(nameof(NewAppointmentPage));
+        //}
 
         async void OnAppointmentSelected(Appointment appointment)
         {
             if (appointment == null)
                 return;
             await Shell.Current.GoToAsync($"{nameof(AppointmentDetailPage)}?{nameof(AppointmentDetailViewModel.AppointmentId)}={appointment.Id}");
+        }
+        async Task ExportToExcel()
+        {
+            var fileName = $"Demo-{Guid.NewGuid()}.xlsx";
+            string filepath = excelService.GenerateExcel(fileName);
+
+            var data = new ExcelModel
+            {
+                Headers = new List<string>() { "Date", "DueTime", "Contact", "Arrival" , "Departure", "Complete", "User" , "Organisation", "Latitude", "Longitude", "GoogleMap Link" }
+            };
+
+            foreach (var appointment in Appointments)
+            {
+                var arrivalTime = "No time logged";
+                var departureTime = "";
+                try
+                {
+                    arrivalTime = new DateTime(appointment.ArrivalTime.Value.Ticks).ToString("HH:mm");
+                }
+                catch (Exception ex)
+                {
+
+                }
+                try
+                {
+                    departureTime = new DateTime(appointment.DepartureTime.Value.Ticks).ToString("HH:mm");
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+                var googleString = "https://www.google.co.uk/maps/@" + appointment.Latitude.ToString() + "," + appointment.Longitude.ToString() + ",383m/data!3m1!1e3";
+
+                data.Values.Add(new List<string>() { appointment.DueTime.ToShortDateString(), appointment.DueTime.ToShortTimeString(), appointment.Contact, arrivalTime, departureTime, appointment.IsCompleted.ToString(), appointment.User, appointment.Organisation, appointment.Latitude.ToString(), appointment.Longitude.ToString(), googleString }) ;
+            }
+
+            excelService.InsertDataIntoSheet(filepath, "Demo", data);
+
+            await Launcher.OpenAsync(new OpenFileRequest()
+            {
+                File = new ReadOnlyFile(filepath)
+            });
         }
     }
 }

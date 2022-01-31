@@ -7,7 +7,11 @@
              xmlns:model="clr-namespace:NhsDemoApp.Models"  
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              x:Name="BrowseAppointmentsPage">
-
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Map" Command="{Binding LoadMapCommand}" />
+    </ContentPage.ToolbarItems>
+    
     <RefreshView x:DataType="local:AppointmentDetailViewModel" Command="{Binding LoadAppointmentCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         <CollectionView x:Name="AppointmentDetailView"
                 ItemsSource="{Binding Appointments}"
@@ -15,7 +19,7 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout x:DataType="model:Appointment" Padding="20,10,20,10">
-                        <maps:Map x:Name="map" IsShowingUser="true" HeightRequest="300" MapType="Hybrid" />
+                        <!--<maps:Map x:Name="MyMap" IsShowingUser="true" HeightRequest="300" MapType="Hybrid"  />-->
                         <Label Text="DueTime:" FontSize="Medium" />
                         <Label Text="{Binding DueTime, StringFormat='Due Time : {0:H\\:mm}'}" FontSize="Small"/>
                         <Label Text="Contact:" FontSize="Medium" />

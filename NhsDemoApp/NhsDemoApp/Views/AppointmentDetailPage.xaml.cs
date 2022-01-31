@@ -14,6 +14,7 @@ namespace NhsDemoApp.Views
     public partial class AppointmentDetailPage : ContentPage
     {
         AppointmentDetailViewModel _viewModel;
+
         public AppointmentDetailPage()
         {
             InitializeComponent();

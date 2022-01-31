@@ -88,14 +88,22 @@
                             </Label>
                             <Switch Grid.Column="2" IsToggled ="{Binding IsCompleted, Mode=TwoWay}" HorizontalOptions="Center" Margin="1">
                             </Switch>
-                            <Label Grid.Column="3" Text ="{Binding ArrivalTime}" HorizontalOptions="Fill" FontSize="11" HorizontalTextAlignment="Center" Margin="1">
-                            </Label>
-                            <!--<CheckBox Grid.Column="3" IsChecked ="{Binding OnSite}" HorizontalOptions="Center" Margin="1">
-                            </CheckBox>-->
+                            <CheckBox Grid.Column="3" IsChecked ="{Binding OnSite}" HorizontalOptions="Center" Margin="1">
+                            </CheckBox>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
+            <ListView.Footer>
+                <StackLayout BackgroundColor="LightPink">
+                    <Button BackgroundColor="DeepPink" 
+                     Command="{Binding ExportToExcelCommand}"
+                     Text="Export data"
+                     TextColor="White"
+                     Margin="20,0"
+                     VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+            </ListView.Footer>
         </ListView>
     </RefreshView>
 </ContentPage>

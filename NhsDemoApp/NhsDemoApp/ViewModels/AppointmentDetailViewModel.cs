@@ -56,7 +56,7 @@ namespace NhsDemoApp.ViewModels
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.ToString());
+                Console.WriteLine(ex.ToString());
             }
             finally
             {

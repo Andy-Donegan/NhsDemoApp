@@ -19,32 +19,5 @@
             <Label Text="App Time:" FontSize="Subtitle" />
             <TimePicker Time="{Binding CurrentTime}" Format="t" FontSize="Small"/>
         </StackLayout>
-        <!--<Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <StackLayout  VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                    <ContentView Padding="0,10,0,00" VerticalOptions="FillAndExpand">
-                        <Image Source="NhsSplashScreen.png" VerticalOptions="Center" HeightRequest="100" />
-                    </ContentView>
-                </StackLayout>
-            </StackLayout>
-            <ScrollView Grid.Row="1">
-                <StackLayout Orientation="Vertical" Padding="30,24,30,24" x:DataType="model:UserSettings">
-                    <Label Text="NHS Demo App" FontSize="Title"/>
-                    <Label Text="Amend the data below to make the output from the App more personalised." FontSize="16" Padding="0,0,0,10"/>
-                    <Label Text="First Name:" FontSize="Subtitle" />
-                    <Entry Text="{Binding FirstName}" FontSize="Small"/>
-                    <Label Text="Last Name:" FontSize="Subtitle" />
-                    <Entry Text="{Binding LastName}" FontSize="Small"/>
-                    <Label Text="Organisation:" FontSize="Subtitle" />
-                    <Entry Text="{Binding Organisation}" FontSize="Small"/>
-                    <Label Text="App Time:" FontSize="Subtitle" />
-                    <TimePicker Time="{Binding CurrentTime}" Format="t" FontSize="Small"/>
-                </StackLayout>
-            </ScrollView>
-        </Grid>-->
     </RefreshView>
 </ContentPage>

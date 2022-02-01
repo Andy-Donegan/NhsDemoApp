@@ -74,7 +74,7 @@ namespace NhsDemoApp.ViewModels
                     {
                         appointment.TimesRequired = true;
                     }
-                    if(appointment.DueTime >= DateTime.Now && appointment.IsCompleted != true)
+                    if(appointment.DueTime.TimeOfDay < userSettings.CurrentTime && appointment.IsCompleted != true)
                     {
                         appointment.IsLate = true;
                     }
@@ -82,8 +82,9 @@ namespace NhsDemoApp.ViewModels
                     {
                         appointment.IsLate = false;
                     }
-                    appointment.User = userSettings.FirstName + " " + userSettings.LastName;
-                    appointment.Organisation = userSettings.Organisation;
+                        appointment.User = userSettings.FirstName + " " + userSettings.LastName;
+                        appointment.Organisation = userSettings.Organisation;
+
                     Appointments.Add(appointment);
                 }
             }

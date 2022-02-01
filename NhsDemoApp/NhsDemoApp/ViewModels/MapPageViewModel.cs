@@ -31,6 +31,7 @@ namespace NhsDemoApp.ViewModels
 
         public MapPageViewModel()
         {
+            Title = "Map Page";
             MyMap = new Map
             {
                 MapType = MapType.Hybrid,

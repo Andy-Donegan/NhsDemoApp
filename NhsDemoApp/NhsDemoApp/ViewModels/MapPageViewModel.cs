@@ -52,18 +52,23 @@ namespace NhsDemoApp.ViewModels
             }
             finally
             {
-                Pin pin = new Pin
-                {
-                    Type = PinType.Place,
-                    Position = new Position(Appointment.Latitude, Appointment.Longitude),
-                    Label = Appointment.Contact
-                };
-                Position position = new Position(Appointment.Latitude, Appointment.Longitude);
-
-                MapSpan mapSpan = MapSpan.FromCenterAndRadius(position, Distance.FromKilometers(0.38));
-                MyMap.Pins.Add(pin);
-                MyMap.MoveToRegion(mapSpan);
+                UpdateMap();
             }
+        }
+
+        public void UpdateMap()
+        {
+            Pin pin = new Pin
+            {
+                Type = PinType.Place,
+                Position = new Position(Appointment.Latitude, Appointment.Longitude),
+                Label = Appointment.Contact
+            };
+            Position position = new Position(Appointment.Latitude, Appointment.Longitude);
+
+            MapSpan mapSpan = MapSpan.FromCenterAndRadius(position, Distance.FromKilometers(0.38));
+            MyMap.Pins.Add(pin);
+            MyMap.MoveToRegion(mapSpan);
         }
 
     }

@@ -18,7 +18,6 @@ namespace NhsDemoApp.ViewModels
         private ExcelService excelService;
         public ObservableCollection<Appointment> Appointments { get; }
         public Command LoadAppointmentsCommand { get; }
-        //public Command AddAppointmentCommand { get; }
         public Command<Appointment> AppointmentTapped { get; }
 
         public AppointmentViewModel()
@@ -28,7 +27,6 @@ namespace NhsDemoApp.ViewModels
             LoadAppointmentsCommand = new Command(async () => await ExecuteLoadAppointmentsCommand());
 
             AppointmentTapped = new Command<Appointment>(OnAppointmentSelected);
-            //AddAppointmentCommand = new Command(OnAddAppointment);
 
             ExportToExcelCommand = new Command(async () => await ExportToExcel());
             excelService = new ExcelService();
@@ -90,11 +88,6 @@ namespace NhsDemoApp.ViewModels
                 OnAppointmentSelected(value);
             }
         }
-
-        //private async void OnAddAppointment(object obj)
-        //{
-        //    await Shell.Current.GoToAsync(nameof(NewAppointmentPage));
-        //}
 
         async void OnAppointmentSelected(Appointment appointment)
         {

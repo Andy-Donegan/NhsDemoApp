@@ -12,7 +12,7 @@ namespace NhsDemoApp.ViewModels
     {
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
         public IDataStoreAppointment<Appointment> DataStoreAppointment => DependencyService.Get<IDataStoreAppointment<Appointment>>();
-        public IDataStoreUser<User> DataStoreUser => DependencyService.Get<IDataStoreUser<User>>();
+        public IDataStoreUserSettings<UserSettings> DataStoreUserSettings => DependencyService.Get<IDataStoreUserSettings<UserSettings>>();
 
         bool isBusy = false;
         public bool IsBusy

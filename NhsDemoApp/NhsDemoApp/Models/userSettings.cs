@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace NhsDemoApp.Models
 {
-    public class User
+    public class UserSettings
     {
         [Required]
         [StringLength(25, MinimumLength = 2)]
@@ -16,5 +16,6 @@ namespace NhsDemoApp.Models
         [Required]
         [StringLength(30, MinimumLength = 2)]
         public string Organisation { get; set; }
+        public TimeSpan CurrentTime { get; set; }
     }
 }

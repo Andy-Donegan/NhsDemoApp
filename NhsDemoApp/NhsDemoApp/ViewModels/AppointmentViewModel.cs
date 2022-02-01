@@ -20,6 +20,7 @@ namespace NhsDemoApp.ViewModels
         public Command LoadAppointmentsCommand { get; }
         public Command<Appointment> AppointmentTapped { get; }
         public Command LoadMap { get; }
+        public UserSettings userSettings { get; set; }
 
         public AppointmentViewModel()
         {
@@ -43,6 +44,20 @@ namespace NhsDemoApp.ViewModels
         async Task ExecuteLoadAppointmentsCommand()
         {
             IsBusy = true;
+            try
+            {
+                userSettings = await DataStoreUserSettings.GetUserSettingsAsync();
+            }
+            catch (Exception ex)
+            {
+                userSettings = new UserSettings
+                {
+                    CurrentTime = DateTime.Now.TimeOfDay,
+                    FirstName = "Default",
+                    LastName = "Name",
+                    Organisation = "NHS"
+                };
+            }
 
             try
             {
@@ -67,6 +82,8 @@ namespace NhsDemoApp.ViewModels
                     {
                         appointment.IsLate = false;
                     }
+                    appointment.User = userSettings.FirstName + " " + userSettings.LastName;
+                    appointment.Organisation = userSettings.Organisation;
                     Appointments.Add(appointment);
                 }
             }

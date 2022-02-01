@@ -15,7 +15,7 @@ namespace NhsDemoApp
 
             DependencyService.Register<MockDataStore>();
             DependencyService.Register<MockDataStoreAppointment>();
-            DependencyService.Register<MockDataStoreUser>();
+            DependencyService.Register<MockDataStoreUserSettings>();
             MainPage = new AppShell();
         }
 

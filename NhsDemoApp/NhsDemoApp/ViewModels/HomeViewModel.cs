@@ -21,24 +21,40 @@ namespace NhsDemoApp.ViewModels
         public string FirstName
         {
             get => firstName;
-            set => SetProperty(ref firstName, value);
+            set
+            {
+                SetProperty(ref firstName, value);
+                UserSettings.FirstName = firstName;
+            }
         }
 
         public string LastName
         {
             get => lastName;
-            set => SetProperty(ref lastName, value);
+            set
+            {
+                SetProperty(ref lastName, value);
+                UserSettings.LastName = lastName;
+            }
         }
 
         public string Organisation
         {
             get => organisation;
-            set => SetProperty(ref organisation, value);
+            set
+            {
+                SetProperty(ref organisation, value);
+                UserSettings.Organisation = organisation;
+            }
         }
         public TimeSpan CurrentTime
         {
             get => currentTime;
-            set => SetProperty(ref currentTime, value);
+            set
+            {
+                SetProperty(ref currentTime, value);
+                UserSettings.CurrentTime = currentTime;
+            }
         }
 
         public HomeViewModel()

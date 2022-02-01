@@ -19,6 +19,7 @@ namespace NhsDemoApp.ViewModels
         public ObservableCollection<Appointment> Appointments { get; }
         public Command LoadAppointmentsCommand { get; }
         public Command<Appointment> AppointmentTapped { get; }
+        public Command LoadMap { get; }
 
         public AppointmentViewModel()
         {
@@ -30,6 +31,14 @@ namespace NhsDemoApp.ViewModels
 
             ExportToExcelCommand = new Command(async () => await ExportToExcel());
             excelService = new ExcelService();
+
+            LoadMap = new Command<Appointment>(OnLoadMap);
+        }
+
+        private async void OnLoadMap(Appointment appointment)
+        {
+            //await Shell.Current.GoToAsync(nameof(MapPage));
+            await Shell.Current.GoToAsync($"{nameof(MapPage)}?{nameof(MapPageViewModel.AppointmentId)}={appointment.Id}");
         }
 
         async Task ExecuteLoadAppointmentsCommand()

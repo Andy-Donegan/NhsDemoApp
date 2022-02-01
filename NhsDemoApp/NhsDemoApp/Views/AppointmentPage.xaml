@@ -7,10 +7,6 @@
              xmlns:model="clr-namespace:NhsDemoApp.Models"  
              x:Name="BrowseAppointmentsPage">
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Command="{Binding AddAppointmentCommand}" />
-    </ContentPage.ToolbarItems>
-
     <RefreshView x:DataType="local:AppointmentViewModel" Command="{Binding LoadAppointmentsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         <ListView x:Name="AppointmentsListView"
                   ItemsSource="{Binding Appointments}"
@@ -48,11 +44,17 @@
                                     <DataTrigger TargetType="Label" Binding="{Binding IsLate}" Value="true">
                                         <Setter Property="TextColor" Value="Red" />
                                     </DataTrigger>
-                                    <DataTrigger TargetType="Label" Binding="{Binding IsCompleted}" Value="false">
-                                        <Setter Property="TextDecorations" Value="None" />
+                                    <DataTrigger TargetType="Label"
+                                         Binding="{Binding Source={x:Reference IsCompletedSwitch}, Path=IsToggled}"
+                                         Value="false">
+                                        <Setter Property="TextDecorations"
+                                        Value="None" />
                                     </DataTrigger>
-                                    <DataTrigger TargetType="Label" Binding="{Binding IsCompleted}" Value="true">
-                                        <Setter Property="TextDecorations" Value="Strikethrough" />
+                                    <DataTrigger TargetType="Label"
+                                         Binding="{Binding Source={x:Reference IsCompletedSwitch}, Path=IsToggled}"
+                                         Value="true">
+                                        <Setter Property="TextDecorations"
+                                        Value="Strikethrough" />
                                     </DataTrigger>
                                 </Label.Triggers>
                                 <Label.GestureRecognizers>
@@ -63,7 +65,7 @@
                                     </TapGestureRecognizer>
                                 </Label.GestureRecognizers>
                             </Label>
-                            <Label x:Name="testLabel" Grid.Column="1" Text ="{Binding Contact}" HorizontalOptions="Fill" FontSize="11" HorizontalTextAlignment="Center" Margin="1">
+                            <Label Grid.Column="1" Text ="{Binding Contact}" HorizontalOptions="Fill" FontSize="11" HorizontalTextAlignment="Center" Margin="1">
                                 <Label.Triggers>
                                     <DataTrigger TargetType="Label" Binding="{Binding TimesRequired}" Value="false">
                                         <Setter Property="TextColor"  Value="Black" />
@@ -71,11 +73,17 @@
                                     <DataTrigger TargetType="Label" Binding="{Binding TimesRequired}" Value="true">
                                         <Setter Property="TextColor"  Value="Green" />
                                     </DataTrigger>
-                                    <DataTrigger TargetType="Label" Binding="{Binding IsCompleted}" Value="false">
-                                        <Setter Property="TextDecorations"  Value="None" />
+                                    <DataTrigger TargetType="Label"
+                                         Binding="{Binding Source={x:Reference IsCompletedSwitch}, Path=IsToggled}"
+                                         Value="false">
+                                        <Setter Property="TextDecorations"
+                                        Value="None" />
                                     </DataTrigger>
-                                    <DataTrigger TargetType="Label" Binding="{Binding IsCompleted}" Value="true">
-                                        <Setter Property="TextDecorations"  Value="Strikethrough" />
+                                    <DataTrigger TargetType="Label"
+                                         Binding="{Binding Source={x:Reference IsCompletedSwitch}, Path=IsToggled}"
+                                         Value="true">
+                                        <Setter Property="TextDecorations"
+                                        Value="Strikethrough" />
                                     </DataTrigger>
                                 </Label.Triggers>
                                 <Label.GestureRecognizers>
@@ -86,7 +94,7 @@
                                     </TapGestureRecognizer>
                                 </Label.GestureRecognizers>
                             </Label>
-                            <Switch Grid.Column="2" IsToggled ="{Binding IsCompleted, Mode=TwoWay}" HorizontalOptions="Center" Margin="1">
+                            <Switch x:Name="IsCompletedSwitch" Grid.Column="2" IsToggled ="{Binding IsCompleted, Mode=TwoWay}" HorizontalOptions="Center" Margin="1">
                             </Switch>
                             <CheckBox Grid.Column="3" IsChecked ="{Binding OnSite}" HorizontalOptions="Center" Margin="1">
                             </CheckBox>

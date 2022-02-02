@@ -7,17 +7,25 @@
              Title="{Binding Title}">
 
     <RefreshView x:DataType="vm:HomeViewModel" Command="{Binding LoadUserSettings}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
-        <StackLayout Orientation="Vertical" Padding="30,24,30,24">
-            <Label Text="NHS Demo App" FontSize="Title"/>
-            <Label Text="Amend the data below to change excel output. Changing the App Time will help demonstrate event triggers for appointments which have not been completed yet but are past due." FontSize="16" Padding="0,0,0,10"/>
-            <Label Text="First Name:" FontSize="Subtitle" />
-            <Entry Text="{Binding FirstName}" FontSize="Small"/>
-            <Label Text="Last Name:" FontSize="Subtitle" />
-            <Entry Text="{Binding LastName}" FontSize="Small"/>
-            <Label Text="Organisation:" FontSize="Subtitle" />
-            <Entry Text="{Binding Organisation}" FontSize="Small"/>
-            <Label Text="App Time:" FontSize="Subtitle" />
-            <TimePicker Time="{Binding CurrentTime}" Format="t" FontSize="Small"/>
+        <ScrollView>
+        <StackLayout Orientation="Vertical" Padding="30,0,30,24">
+            <StackLayout  HorizontalOptions="Fill">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                    <ContentView Padding="0,10,0,00" VerticalOptions="FillAndExpand">
+                        <Image Source="NhsSplashScreen.png" VerticalOptions="Center" HeightRequest="100" />
+                    </ContentView>
+                </StackLayout>
+            </StackLayout>
+            <Label Text="Amend the data below to change excel output. Changing the App Time will help demonstrate event triggers for appointments which have not been completed yet but are past due." FontSize="13" Padding="0,0,0,10"/>
+                <Label Text="First Name:" FontSize="13" TextColor="#005EB8"/>
+            <Entry Text="{Binding FirstName}" FontSize="13"/>
+                <Label Text="Last Name:" FontSize="13" TextColor="#005EB8"/>
+            <Entry Text="{Binding LastName}" FontSize="13"/>
+                <Label Text="Organisation:" FontSize="13" TextColor="#005EB8"/>
+            <Entry Text="{Binding Organisation}" FontSize="13"/>
+                <Label Text="App Time:" FontSize="13" TextColor="#005EB8"/>
+            <TimePicker Time="{Binding CurrentTime}" Format="t" FontSize="13"/>
         </StackLayout>
+        </ScrollView>
     </RefreshView>
 </ContentPage>

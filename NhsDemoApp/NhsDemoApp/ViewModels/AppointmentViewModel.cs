@@ -134,7 +134,7 @@ namespace NhsDemoApp.ViewModels
             foreach (var appointment in Appointments)
             {
                 var arrivalTime = "No time logged";
-                var departureTime = "";
+                var departureTime = "No time logged";
                 try
                 {
                     arrivalTime = new DateTime(appointment.ArrivalTime.Value.Ticks).ToString("HH:mm");

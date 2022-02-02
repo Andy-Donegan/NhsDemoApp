@@ -9,7 +9,7 @@
     <RefreshView x:DataType="vm:HomeViewModel" Command="{Binding LoadUserSettings}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         <StackLayout Orientation="Vertical" Padding="30,24,30,24">
             <Label Text="NHS Demo App" FontSize="Title"/>
-            <Label Text="Amend the data below to make the output from the App more personalised." FontSize="16" Padding="0,0,0,10"/>
+            <Label Text="Amend the data below to change excel output. Changing the App Time will help demonstrate event triggers for appointments which have not been completed yet but are past due." FontSize="16" Padding="0,0,0,10"/>
             <Label Text="First Name:" FontSize="Subtitle" />
             <Entry Text="{Binding FirstName}" FontSize="Small"/>
             <Label Text="Last Name:" FontSize="Subtitle" />

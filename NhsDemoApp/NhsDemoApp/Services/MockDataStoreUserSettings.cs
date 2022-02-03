@@ -12,7 +12,7 @@ namespace NhsDemoApp.Services
 
         public MockDataStoreUserSettings()
         {
-            _userSettings = new UserSettings { FirstName = "Cara", LastName = "Smithson", Organisation = "BDCT", CurrentTime=DateTime.Now.TimeOfDay };
+            _userSettings = new UserSettings { FirstName = "Cara", LastName = "Smithson", Organisation = "BDCT", CurrentTime=DateTime.Now.TimeOfDay , SecurityPin = 1234 };
 
         }
 

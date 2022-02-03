@@ -17,5 +17,6 @@ namespace NhsDemoApp.Models
         [StringLength(30, MinimumLength = 2)]
         public string Organisation { get; set; }
         public TimeSpan CurrentTime { get; set; }
+        public int SecurityPin { get; set; }
     }
 }

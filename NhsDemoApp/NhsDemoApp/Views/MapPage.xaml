@@ -9,7 +9,11 @@
                AbsoluteLayout.LayoutFlags="All" 
                HorizontalOptions="FillAndExpand"
                VerticalOptions="FillAndExpand" />
-        <ContentView Content="{Binding MyButton}" AbsoluteLayout.LayoutBounds="0, 1, 100, 100"
+        <ContentView Content="{Binding MyLocationButton}" AbsoluteLayout.LayoutBounds="0, 0.05, 70, 70"
+          AbsoluteLayout.LayoutFlags="PositionProportional"/>
+        <ContentView Content="{Binding ContactLocationButton}" AbsoluteLayout.LayoutBounds="0, 0.5, 70, 70"
+          AbsoluteLayout.LayoutFlags="PositionProportional"/>
+        <ContentView Content="{Binding ClearButton}" AbsoluteLayout.LayoutBounds="0, 0.95, 70, 70"
           AbsoluteLayout.LayoutFlags="PositionProportional"/>
     </AbsoluteLayout>
 </ContentPage>

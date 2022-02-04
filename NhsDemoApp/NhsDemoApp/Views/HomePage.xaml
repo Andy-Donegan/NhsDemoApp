@@ -23,6 +23,8 @@
             <Entry Text="{Binding LastName}" FontSize="13"/>
                 <Label Text="Organisation:" FontSize="13" TextColor="#005EB8"/>
             <Entry Text="{Binding Organisation}" FontSize="13"/>
+                <Label Text="Security Pin:" FontSize="13" TextColor="#005EB8"/>
+                <Entry Text="{Binding SecurityPin}" MaxLength="4" FontSize="13"/>
                 <Label Text="App Time:" FontSize="13" TextColor="#005EB8"/>
             <TimePicker Time="{Binding CurrentTime}" Format="t" FontSize="13"/>
         </StackLayout>

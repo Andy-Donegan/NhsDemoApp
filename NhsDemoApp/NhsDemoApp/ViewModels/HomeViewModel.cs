@@ -17,6 +17,25 @@ namespace NhsDemoApp.ViewModels
         private string lastName;
         private string organisation;
         private TimeSpan currentTime;
+        private int securityPin;
+
+        public int SecurityPin
+        {
+            get => securityPin;
+            set
+            {
+                if(value.ToString().Length < 4)
+                {
+
+                }
+                else
+                {
+                    // Require Data Validation
+                    SetProperty(ref securityPin, value);
+                    UserSettings.SecurityPin = value;
+                }
+            }
+        }
 
         public string FirstName
         {
@@ -73,6 +92,7 @@ namespace NhsDemoApp.ViewModels
                 LastName = UserSettings.LastName;
                 Organisation = UserSettings.Organisation;
                 CurrentTime = UserSettings.CurrentTime;
+                SecurityPin = UserSettings.SecurityPin;
             }
             catch (Exception ex)
             {

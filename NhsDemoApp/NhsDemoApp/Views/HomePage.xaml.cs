@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using NhsDemoApp.ViewModels;
+using NhsDemoApp.Services;
 
 namespace NhsDemoApp.Views
 {

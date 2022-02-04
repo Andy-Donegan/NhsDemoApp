@@ -40,13 +40,7 @@ namespace NhsDemoApp.ViewModels
         {
 
             string result = await App.Current.MainPage.DisplayPromptAsync("Security Check", "Please enter your 4 digit pin.", cancel: "Cancel", accept: "Ok", maxLength: 4, keyboard: Keyboard.Numeric);
-            if (result == null || result == "" )
-            {
-                result = "No Pin Entered";
-                await App.Current.MainPage.DisplayAlert("Alert", "You entered : " + result, "OK");
-                return;
-            }
-            if (result != "1234")
+            if (result != UserSettings.SecurityPin.ToString())
             {
                 await App.Current.MainPage.DisplayAlert("Alert", "You entered : " + result + " this is incorrect. Check Pin on Home Page.", "OK");
                 return;

@@ -145,9 +145,7 @@ namespace NhsDemoApp.ViewModels
         {
             double latitude = MyMap.VisibleRegion.Center.Latitude;
             double longitude = MyMap.VisibleRegion.Center.Longitude;
-            //var test = await LastKnownLocation();
             AddContactLocationPin(latitude, longitude);
-            //UpdateMap(latitude, longitude);
         }
 
         async void MoveMapToUserLocation(object sender, EventArgs e)
@@ -189,7 +187,6 @@ namespace NhsDemoApp.ViewModels
         public void AddContactLocationPin(double latitude, double longitude)
         {
             RemovePin(ContactLocationPin);
-            //MyMap.Pins.Clear();
             ContactLocationPin = new Pin
             {
                 Type = PinType.Place,
@@ -201,7 +198,6 @@ namespace NhsDemoApp.ViewModels
         public void AddUserLocationPin(double latitude, double longitude)
         {
             RemovePin(UserLocationPin);
-            //MyMap.Pins.Clear();
             UserLocationPin = new Pin
             {
                 Type = PinType.Place,

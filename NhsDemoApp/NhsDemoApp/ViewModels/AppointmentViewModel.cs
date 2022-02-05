@@ -1,6 +1,7 @@
 ﻿using NhsDemoApp.Models;
 using NhsDemoApp.Services;
 using NhsDemoApp.Views;
+using Plugin.LocalNotification;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -20,6 +21,7 @@ namespace NhsDemoApp.ViewModels
         public Command LoadAppointmentsCommand { get; }
         public Command<Appointment> AppointmentTapped { get; }
         public Command LoadMap { get; }
+        public Command RoastWillow { get; }
         public UserSettings UserSettings { get; set; }
 
         public AppointmentViewModel()
@@ -38,14 +40,12 @@ namespace NhsDemoApp.ViewModels
 
         private async void OnLoadMap(Appointment appointment)
         {
-
             string result = await App.Current.MainPage.DisplayPromptAsync("Security Check", "Please enter your 4 digit pin.", cancel: "Cancel", accept: "Ok", maxLength: 4, keyboard: Keyboard.Numeric);
             if (result != UserSettings.SecurityPin.ToString())
             {
                 await App.Current.MainPage.DisplayAlert("Alert", "You entered : " + result + " this is incorrect. Check Pin on Home Page.", "OK");
                 return;
-            }
-            
+            }            
             await Shell.Current.GoToAsync($"{nameof(MapPage)}?{nameof(MapPageViewModel.AppointmentId)}={appointment.Id}");
         }
 

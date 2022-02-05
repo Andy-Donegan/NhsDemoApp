@@ -15,7 +15,7 @@ namespace NhsDemoApp.Services
             var dueTime = DateTime.Now;
             var timeSpan = new TimeSpan(9, 0, 0);
             dueTime = dueTime.Date + timeSpan;
-            string[] contactList = { "Lewis Smithen", "Charlie Donegan", "Sure Start Shipley", "Sarah Sullivan", "Roger Mellee", "New Mill" , "William Tyson", "Willow Teale", "Jacobs Well", "Louise McCrone" };
+            string[] contactList = { "Lewis Smithen", "Charlie Donegan", "Sure Start Shipley", "Sarah Sullivan", "Roger Mellee", "New Mill" , "William Tyson", "Cara Smithson", "Jacobs Well", "Louise McCrone" };
             var random = new Random();
 
             appointments = new List<Appointment>();

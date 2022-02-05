@@ -89,13 +89,13 @@ namespace NhsDemoApp.ViewModels
             var notification = new NotificationRequest
             {
                 NotificationId = 100,
-                Title = "Did you Fart",
-                Description = "No it was definitely Taylor",
+                Title = "Hey Willow",
+                Description = "You are famous !!!!!!",
                 ReturningData = "Dummy data", // Returning data when tapped on notification.
                 Schedule =
-    {
-        NotifyTime = DateTime.Now.AddSeconds(10) // Used for Scheduling local notification, if not specified notification will show immediately.
-    }
+                    {
+                        NotifyTime = DateTime.Now.AddSeconds(10) // Used for Scheduling local notification, if not specified notification will show immediately.
+                    }
             };
             await NotificationCenter.Current.Show(notification);
             IsBusy = true;

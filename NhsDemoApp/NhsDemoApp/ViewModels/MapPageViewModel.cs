@@ -21,7 +21,7 @@ namespace NhsDemoApp.ViewModels
         public Button ClearButton { get; set; }
         public Button MyLocationButton { get; set; }
         public Appointment Appointment { get; set; }
-        public Xamarin.Essentials.Location lastKnownLocation { get; set; }
+        public Xamarin.Essentials.Location LastKnownLocation { get; set; }
         public string AppointmentId
         {
             get
@@ -36,7 +36,7 @@ namespace NhsDemoApp.ViewModels
         }
         public async void LoadAppointmentId(string Id)
         {
-            if (!await LastKnownLocation())
+            if (!await GetLastKnownLocation())
             {
                 // failed create new location positions. ToDo.
             }
@@ -51,27 +51,27 @@ namespace NhsDemoApp.ViewModels
             }
             finally
             {
-                UpdateMap(lastKnownLocation.Latitude, lastKnownLocation.Longitude);
+                UpdateMap(LastKnownLocation.Latitude, LastKnownLocation.Longitude);
             }
         }
 
         public MapPageViewModel()
         {
             Title = "Map Page";
-            lastKnownLocation = new Xamarin.Essentials.Location();
+            LastKnownLocation = new Xamarin.Essentials.Location();
             UserLocationPin = new Pin();
             ContactLocationPin = new Pin();
             CreateMap();
             CreateMapControls();
         }
 
-        async Task<bool> LastKnownLocation()
+        async Task<bool> GetLastKnownLocation()
         {            
             try
             {
-                lastKnownLocation = await Xamarin.Essentials.Geolocation.GetLastKnownLocationAsync();
+                LastKnownLocation = await Xamarin.Essentials.Geolocation.GetLastKnownLocationAsync();
 
-                if (lastKnownLocation == null)
+                if (LastKnownLocation == null)
                 {
                     if(!await RequestNewLocation())
                     {
@@ -106,8 +106,8 @@ namespace NhsDemoApp.ViewModels
         {
             var request = new Xamarin.Essentials.GeolocationRequest(Xamarin.Essentials.GeolocationAccuracy.Best, TimeSpan.FromSeconds(10));
             CancellationTokenSource cts = new CancellationTokenSource();
-            lastKnownLocation = await Xamarin.Essentials.Geolocation.GetLocationAsync(request, cts.Token);
-            if (lastKnownLocation == null)
+            LastKnownLocation = await Xamarin.Essentials.Geolocation.GetLocationAsync(request, cts.Token);
+            if (LastKnownLocation == null)
             {
                 // We failed to get any location data for user at all.
                 return false;
@@ -152,9 +152,9 @@ namespace NhsDemoApp.ViewModels
 
         async void MoveMapToUserLocation(object sender, EventArgs e)
         {
-            var test = await LastKnownLocation();
-            AddUserLocationPin(lastKnownLocation.Latitude, lastKnownLocation.Longitude);
-            UpdateMap(lastKnownLocation.Latitude, lastKnownLocation.Longitude);
+            var test = await GetLastKnownLocation();
+            AddUserLocationPin(LastKnownLocation.Latitude, LastKnownLocation.Longitude);
+            UpdateMap(LastKnownLocation.Latitude, LastKnownLocation.Longitude);
         }
 
         public void CreateMap()        {

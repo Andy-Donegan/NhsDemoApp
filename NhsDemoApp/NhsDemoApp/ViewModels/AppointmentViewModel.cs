@@ -37,36 +37,6 @@ namespace NhsDemoApp.ViewModels
 
             LoadMap = new Command<Appointment>(OnLoadMap);
         }
-        
-        async Task SendLocalNotification()
-        {
-            //TODO sort timers etc for Notifications.
-            var notification = new NotificationRequest
-            {
-                NotificationId = 100,
-                Title = "Title",
-                Subtitle = "Subtitle",
-                Description = "Description",
-                BadgeNumber = 5,
-                ReturningData = "100",
-                Schedule =
-                {
-                    NotifyTime = DateTime.Now.AddSeconds(10) // Used for Scheduling local notification, if not specified notification will show immediately.
-                },
-                Android =
-                {
-                    IconSmallName =
-                    {
-                        ResourceName = "icon_home",
-                    },
-                    Color =
-                    {
-                        ResourceName = "colorPrimary"
-                    }
-                }
-            };
-            await NotificationCenter.Current.Show(notification);
-        }
 
         private async void OnLoadMap(Appointment appointment)
         {
@@ -140,6 +110,7 @@ namespace NhsDemoApp.ViewModels
 
                     Appointments.Add(appointment);
                 }
+                //TODO Add test notifications Call here or in the foreach above. use SendLocalNotification to send message.
             }
             catch (Exception ex)
             {
@@ -149,6 +120,36 @@ namespace NhsDemoApp.ViewModels
             {
                 IsBusy = false;
             }
+        }
+
+        async Task SendLocalNotification()
+        {
+            //TODO sort timers etc for Notifications.
+            var notification = new NotificationRequest
+            {
+                NotificationId = 100,
+                Title = "Title",
+                Subtitle = "Subtitle",
+                Description = "Description",
+                BadgeNumber = 5,
+                ReturningData = "100",
+                Schedule =
+                {
+                    NotifyTime = DateTime.Now.AddSeconds(10) // Used for Scheduling local notification, if not specified notification will show immediately.
+                },
+                Android =
+                {
+                    IconSmallName =
+                    {
+                        ResourceName = "icon_home",
+                    },
+                    Color =
+                    {
+                        ResourceName = "colorPrimary"
+                    }
+                }
+            };
+            await NotificationCenter.Current.Show(notification);
         }
 
         public void OnAppearing()

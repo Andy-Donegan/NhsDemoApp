@@ -37,6 +37,32 @@ namespace NhsDemoApp.ViewModels
 
             LoadMap = new Command<Appointment>(OnLoadMap);
         }
+        
+        async Task SendLocalNotification()
+        {
+            //TODO sort timers etc for Notifications.
+            var request = new NotificationRequest
+            {
+                NotificationId = 100,
+                Title = "Title",
+                Subtitle = "Subtitle",
+                Description = "Description",
+                BadgeNumber = 5,
+                ReturningData = "100",
+                Android =
+                {
+                    IconSmallName =
+                    {
+                        ResourceName = "icon_home",
+                    },
+                    Color =
+                    {
+                        ResourceName = "colorPrimary"
+                    }
+                }
+            };
+            var ff = await NotificationCenter.Current.Show(request);
+        }
 
         private async void OnLoadMap(Appointment appointment)
         {
@@ -110,8 +136,7 @@ namespace NhsDemoApp.ViewModels
         public void OnAppearing()
         {
             IsBusy = true;
-            SelectedAppointment = null;
-            
+            SelectedAppointment = null;            
         }
 
         public Appointment SelectedAppointment
@@ -130,6 +155,7 @@ namespace NhsDemoApp.ViewModels
                 return;
             await Shell.Current.GoToAsync($"{nameof(AppointmentDetailPage)}?{nameof(AppointmentDetailViewModel.AppointmentId)}={appointment.Id}");
         }
+
         async Task ExportToExcel()
         {
             var fileName = $"Demo-{Guid.NewGuid()}.xlsx";

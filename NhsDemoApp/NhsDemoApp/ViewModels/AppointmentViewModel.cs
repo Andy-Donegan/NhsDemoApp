@@ -66,14 +66,23 @@ namespace NhsDemoApp.ViewModels
 
         private async void OnLoadMap(Appointment appointment)
         {
-            // This Method requires splitting into a Security check which will then call the LoadMap Method etc. TODO also could have this method call a security method which returns bool and then proceed or return ?? This is better idea.
+            var pinCheck = SecurityCheck();
+            if (pinCheck != null)
+            {
+                await Shell.Current.GoToAsync($"{nameof(MapPage)}?{nameof(MapPageViewModel.AppointmentId)}={appointment.Id}");
+            }
+            return;
+        }
+
+        async Task<bool> SecurityCheck()
+        {
             string result = await App.Current.MainPage.DisplayPromptAsync("Security Check", "Please enter your 4 digit pin.", cancel: "Cancel", accept: "Ok", maxLength: 4, keyboard: Keyboard.Numeric);
             if (result != UserSettings.SecurityPin.ToString())
             {
                 await App.Current.MainPage.DisplayAlert("Alert", "You entered : " + result + " this is incorrect. Check Pin on Home Page.", "OK");
-                return;
-            }            
-            await Shell.Current.GoToAsync($"{nameof(MapPage)}?{nameof(MapPageViewModel.AppointmentId)}={appointment.Id}");
+                return false;
+            }
+            return true;
         }
 
         async Task ExecuteLoadAppointmentsCommand()

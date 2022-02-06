@@ -89,9 +89,8 @@ namespace NhsDemoApp.ViewModels
             return true;
         }
 
-        async Task ExecuteLoadAppointmentsCommand()
+        async Task LoadUserSettings()
         {
-            IsBusy = true;
             try
             {
                 UserSettings = await DataStoreUserSettings.GetUserSettingsAsync();
@@ -106,6 +105,12 @@ namespace NhsDemoApp.ViewModels
                     Organisation = "NHS"
                 };
             }
+        }
+
+        async Task ExecuteLoadAppointmentsCommand()
+        {
+            IsBusy = true;
+            await LoadUserSettings();
 
             try
             {
@@ -138,7 +143,7 @@ namespace NhsDemoApp.ViewModels
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.ToString());
+                Console.WriteLine(ex.ToString());
             }
             finally
             {

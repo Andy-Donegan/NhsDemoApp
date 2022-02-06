@@ -31,7 +31,7 @@ namespace NhsDemoApp.ViewModels
                 }
                 else
                 {
-                    // Require Data Validation
+                    // TODO Require Data Validation
                     SetProperty(ref securityPin, value);
                     UserSettings.SecurityPin = value;
                 }
@@ -85,19 +85,6 @@ namespace NhsDemoApp.ViewModels
 
         async Task GetUserSettings()
         {
-            // ToDelete - Test Notification for new module
-            var notification = new NotificationRequest
-            {
-                NotificationId = 100,
-                Title = "Hey Willow",
-                Description = "You are famous !!!!!!",
-                ReturningData = "Dummy data", // Returning data when tapped on notification.
-                Schedule =
-                    {
-                        NotifyTime = DateTime.Now.AddSeconds(10) // Used for Scheduling local notification, if not specified notification will show immediately.
-                    }
-            };
-            await NotificationCenter.Current.Show(notification);
             IsBusy = true;
             try
             {

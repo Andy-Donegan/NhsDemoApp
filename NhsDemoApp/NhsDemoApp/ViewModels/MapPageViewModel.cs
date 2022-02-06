@@ -22,6 +22,7 @@ namespace NhsDemoApp.ViewModels
         public Button MyLocationButton { get; set; }
         public Appointment Appointment { get; set; }
         public Xamarin.Essentials.Location LastKnownLocation { get; set; }
+        
         public string AppointmentId
         {
             get
@@ -34,6 +35,7 @@ namespace NhsDemoApp.ViewModels
                 LoadAppointmentId(value);
             }
         }
+
         public async void LoadAppointmentId(string Id)
         {
             if (!await GetLastKnownLocation())
@@ -109,7 +111,7 @@ namespace NhsDemoApp.ViewModels
             LastKnownLocation = await Xamarin.Essentials.Geolocation.GetLocationAsync(request, cts.Token);
             if (LastKnownLocation == null)
             {
-                // We failed to get any location data for user at all.
+                // TODO We failed to get any location data for user at all,Set Default Location.
                 return false;
             }
             return true;
@@ -124,6 +126,7 @@ namespace NhsDemoApp.ViewModels
                 ImageSource = "Contact"
             };
             ContactLocationButton.Clicked += AddContactLocation;
+            //TODO - Decide what this button is for and functionality etc.
             ClearButton = new Button
             {
                 CornerRadius = 35,
@@ -197,6 +200,7 @@ namespace NhsDemoApp.ViewModels
         }
         public void AddUserLocationPin(double latitude, double longitude)
         {
+            //TODO Change Pin to something more suitable for user last known location.
             RemovePin(UserLocationPin);
             UserLocationPin = new Pin
             {

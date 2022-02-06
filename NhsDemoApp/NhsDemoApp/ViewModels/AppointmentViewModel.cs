@@ -41,7 +41,7 @@ namespace NhsDemoApp.ViewModels
         async Task SendLocalNotification()
         {
             //TODO sort timers etc for Notifications.
-            var request = new NotificationRequest
+            var notification = new NotificationRequest
             {
                 NotificationId = 100,
                 Title = "Title",
@@ -49,6 +49,10 @@ namespace NhsDemoApp.ViewModels
                 Description = "Description",
                 BadgeNumber = 5,
                 ReturningData = "100",
+                Schedule =
+                {
+                    NotifyTime = DateTime.Now.AddSeconds(10) // Used for Scheduling local notification, if not specified notification will show immediately.
+                },
                 Android =
                 {
                     IconSmallName =
@@ -61,13 +65,13 @@ namespace NhsDemoApp.ViewModels
                     }
                 }
             };
-            var ff = await NotificationCenter.Current.Show(request);
+            await NotificationCenter.Current.Show(notification);
         }
 
         private async void OnLoadMap(Appointment appointment)
         {
-            var pinCheck = SecurityCheck();
-            if (pinCheck != null)
+            var pinCheck = await SecurityCheck();
+            if (pinCheck != false)
             {
                 await Shell.Current.GoToAsync($"{nameof(MapPage)}?{nameof(MapPageViewModel.AppointmentId)}={appointment.Id}");
             }

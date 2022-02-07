@@ -144,7 +144,7 @@ namespace NhsDemoApp.ViewModels
                 MapType = MapType.Hybrid,
                 MoveToLastRegionOnLayoutChange = false,
                 IsShowingUser = true
-            };
+            };            
             MyMap.MapClicked += OnMapClicked;
         }
 

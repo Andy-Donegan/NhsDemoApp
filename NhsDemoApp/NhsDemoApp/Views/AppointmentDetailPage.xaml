@@ -5,7 +5,6 @@
              Title="{Binding Title}"
              xmlns:local="clr-namespace:NhsDemoApp.ViewModels"  
              xmlns:model="clr-namespace:NhsDemoApp.Models"  
-             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              x:Name="BrowseAppointmentsPage">
     
     <ContentPage.ToolbarItems>

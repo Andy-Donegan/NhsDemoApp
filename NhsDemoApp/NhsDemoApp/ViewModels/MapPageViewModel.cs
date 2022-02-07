@@ -20,6 +20,9 @@ namespace NhsDemoApp.ViewModels
         public Button ContactLocationButton { get; set; }
         public Button ClearButton { get; set; }
         public Button MyLocationButton { get; set; }
+        public Button ZoomInButton { get; set; }
+        public Button ZoomOutButton { get; set; }
+        public Image CrossHair { get; set; }
         public Appointment Appointment { get; set; }
         public Xamarin.Essentials.Location LastKnownLocation { get; set; }
         public UserSettings UserSettings { get; set; }
@@ -54,6 +57,10 @@ namespace NhsDemoApp.ViewModels
             }
             finally
             {
+                if(Appointment.Latitude != 0 && Appointment.Longitude != 0)
+                {
+                    AddContactLocationPin(Appointment.Latitude, Appointment.Longitude);
+                }
                 UpdateMap(LastKnownLocation.Latitude, LastKnownLocation.Longitude);
             }
         }
@@ -124,7 +131,8 @@ namespace NhsDemoApp.ViewModels
             MyMap = new Map
             {
                 MapType = MapType.Hybrid,
-                MoveToLastRegionOnLayoutChange = false
+                MoveToLastRegionOnLayoutChange = false,
+                IsShowingUser = true
             };
             MyMap.MapClicked += OnMapClicked;
         }
@@ -138,14 +146,15 @@ namespace NhsDemoApp.ViewModels
                 Text = "Contact"
             };
             ContactLocationButton.Clicked += AddContactLocation;
-            //TODO - Decide what this button is for and functionality etc.
+
             ClearButton = new Button
             {
                 CornerRadius = 35,
                 FontSize = 8,
                 ImageSource = "icon_about"
             };
-            //ClearButton.Clicked += NewFunctionToWrite.
+            ClearButton.Clicked += RemoveContactLocationPin;
+
             MyLocationButton = new Button
             {
                 CornerRadius = 35,
@@ -154,6 +163,23 @@ namespace NhsDemoApp.ViewModels
             };
             MyLocationButton.Clicked += MoveMapToUserLocation;
 
+            CrossHair = new Image
+            {
+                Source = "crosshair.png"
+            };
+        }
+
+        async void RemoveContactLocationPin(object sender, EventArgs e)
+        {
+            var pinCheck = await SecurityCheck();
+            if (pinCheck == false)
+            {
+                return;
+            }
+            Appointment.Latitude = 0;
+            Appointment.Longitude = 0;
+
+            RemovePin(ContactLocationPin);
         }
 
         async void AddContactLocation(object sender, EventArgs e)
@@ -165,6 +191,10 @@ namespace NhsDemoApp.ViewModels
             }
             double latitude = MyMap.VisibleRegion.Center.Latitude;
             double longitude = MyMap.VisibleRegion.Center.Longitude;
+
+            Appointment.Latitude = latitude;
+            Appointment.Longitude = longitude;
+
             AddContactLocationPin(latitude, longitude);
         }
 
@@ -185,7 +215,7 @@ namespace NhsDemoApp.ViewModels
         async void MoveMapToUserLocation(object sender, EventArgs e)
         {
             var test = await GetLastKnownLocation();
-            AddUserLocationPin(LastKnownLocation.Latitude, LastKnownLocation.Longitude);
+
             UpdateMap(LastKnownLocation.Latitude, LastKnownLocation.Longitude);
         }
 
@@ -196,9 +226,19 @@ namespace NhsDemoApp.ViewModels
 
         public void UpdateMap(double latitude, double longitude)
         {
+            double distance;
             Position position = new Position(latitude, longitude);
+            try
+            {
+                distance = MyMap.VisibleRegion.Radius.Kilometers;
+            }
+            catch
+            {
+                distance = 0.40;
+            }
 
-            MapSpan mapSpan = MapSpan.FromCenterAndRadius(position, Distance.FromKilometers(0.38));
+
+            MapSpan mapSpan = MapSpan.FromCenterAndRadius(position, Distance.FromKilometers(distance));
 
             MyMap.MoveToRegion(mapSpan);
         }
@@ -217,17 +257,6 @@ namespace NhsDemoApp.ViewModels
                 Label = Appointment.Contact
             };
             MyMap.Pins.Add(ContactLocationPin);
-        }
-        public void AddUserLocationPin(double latitude, double longitude)
-        {
-            //TODO Change Pin to something more suitable for user last known location.
-            RemovePin(UserLocationPin);
-            UserLocationPin = new Pin
-            {
-                Position = new Position(latitude, longitude),
-                Label = "My Location"
-            };
-            MyMap.Pins.Add(UserLocationPin);
         }
     }
 }

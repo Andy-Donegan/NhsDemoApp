@@ -40,23 +40,7 @@ namespace NhsDemoApp.ViewModels
 
         private async void OnLoadMap(Appointment appointment)
         {
-            var pinCheck = await SecurityCheck();
-            if (pinCheck != false)
-            {
-                await Shell.Current.GoToAsync($"{nameof(MapPage)}?{nameof(MapPageViewModel.AppointmentId)}={appointment.Id}");
-            }
-            return;
-        }
-
-        async Task<bool> SecurityCheck()
-        {
-            string result = await App.Current.MainPage.DisplayPromptAsync("Security Check", "Please enter your 4 digit pin.", cancel: "Cancel", accept: "Ok", maxLength: 4, keyboard: Keyboard.Numeric);
-            if (result != UserSettings.SecurityPin.ToString())
-            {
-                await App.Current.MainPage.DisplayAlert("Alert", "You entered : " + result + " this is incorrect. Check Pin on Home Page.", "OK");
-                return false;
-            }
-            return true;
+            await Shell.Current.GoToAsync($"{nameof(MapPage)}?{nameof(MapPageViewModel.AppointmentId)}={appointment.Id}");
         }
 
         async Task LoadUserSettings()

@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using Xamarin.Forms.Maps;
 using System.Threading;
+using Xamarin.Forms.BetterMaps;
 
 namespace NhsDemoApp.ViewModels
 {
@@ -22,7 +22,8 @@ namespace NhsDemoApp.ViewModels
         public Button MyLocationButton { get; set; }
         public Appointment Appointment { get; set; }
         public Xamarin.Essentials.Location LastKnownLocation { get; set; }
-        
+        public UserSettings UserSettings { get; set; }
+
         public string AppointmentId
         {
             get
@@ -117,13 +118,24 @@ namespace NhsDemoApp.ViewModels
             return true;
         }
 
+        public void CreateMap()
+        {
+
+            MyMap = new Map
+            {
+                MapType = MapType.Hybrid,
+                MoveToLastRegionOnLayoutChange = false
+            };
+            MyMap.MapClicked += OnMapClicked;
+        }
+
         public void CreateMapControls()
         {
             ContactLocationButton = new Button
             {
                 CornerRadius = 50,
                 FontSize = 8,
-                ImageSource = "Contact"
+                Text = "Contact"
             };
             ContactLocationButton.Clicked += AddContactLocation;
             //TODO - Decide what this button is for and functionality etc.
@@ -144,11 +156,30 @@ namespace NhsDemoApp.ViewModels
 
         }
 
-        void AddContactLocation(object sender, EventArgs e)
+        async void AddContactLocation(object sender, EventArgs e)
         {
+            var pinCheck = await SecurityCheck();
+            if (pinCheck == false)
+            {
+                return;
+            }
             double latitude = MyMap.VisibleRegion.Center.Latitude;
             double longitude = MyMap.VisibleRegion.Center.Longitude;
             AddContactLocationPin(latitude, longitude);
+        }
+
+        async Task<bool> SecurityCheck()
+        {
+            UserSettings = await DataStoreUserSettings.GetUserSettingsAsync();
+
+            string result = await App.Current.MainPage.DisplayPromptAsync("Security Check", "Please enter your 4 digit security pin.", cancel: "Cancel", accept: "Ok", maxLength: 4, keyboard: Keyboard.Numeric);
+            
+            if (result != UserSettings.SecurityPin.ToString())
+            {
+                await App.Current.MainPage.DisplayAlert("Alert", "You entered : " + result + " this is incorrect. Check Security Pin on Home Page.", "OK");
+                return false;
+            }
+            return true;
         }
 
         async void MoveMapToUserLocation(object sender, EventArgs e)
@@ -156,16 +187,6 @@ namespace NhsDemoApp.ViewModels
             var test = await GetLastKnownLocation();
             AddUserLocationPin(LastKnownLocation.Latitude, LastKnownLocation.Longitude);
             UpdateMap(LastKnownLocation.Latitude, LastKnownLocation.Longitude);
-        }
-
-        public void CreateMap()        {
-
-            MyMap = new Map
-            {
-                MapType = MapType.Hybrid,
-                MoveToLastRegionOnLayoutChange = false
-            };
-            MyMap.MapClicked += OnMapClicked;
         }
 
         void OnMapClicked(object sender, MapClickedEventArgs e)
@@ -192,7 +213,6 @@ namespace NhsDemoApp.ViewModels
             RemovePin(ContactLocationPin);
             ContactLocationPin = new Pin
             {
-                Type = PinType.Place,
                 Position = new Position(latitude, longitude),
                 Label = Appointment.Contact
             };
@@ -204,7 +224,6 @@ namespace NhsDemoApp.ViewModels
             RemovePin(UserLocationPin);
             UserLocationPin = new Pin
             {
-                Type = PinType.Place,
                 Position = new Position(latitude, longitude),
                 Label = "My Location"
             };

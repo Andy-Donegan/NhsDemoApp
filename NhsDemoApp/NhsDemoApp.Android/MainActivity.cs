@@ -1,5 +1,4 @@
 ﻿using System;
-
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
@@ -47,7 +46,7 @@ namespace NhsDemoApp.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            Xamarin.FormsMaps.Init(this, savedInstanceState);
+            Xamarin.FormsBetterMaps.Init(this, savedInstanceState);
             LoadApplication(new App());
 
             NotificationCenter.NotifyNotificationTapped(Intent);

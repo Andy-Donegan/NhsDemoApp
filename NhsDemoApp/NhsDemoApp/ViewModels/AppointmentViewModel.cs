@@ -92,6 +92,15 @@ namespace NhsDemoApp.ViewModels
                         appointment.User = UserSettings.FirstName + " " + UserSettings.LastName;
                         appointment.Organisation = UserSettings.Organisation;
 
+                    if (UserSettings.OnSiteID == appointment.Id)
+                    {
+                        appointment.OnSite = true;
+                    }
+                    else
+                    {
+                        appointment.OnSite= false;
+                    }
+
                     Appointments.Add(appointment);
                 }
                 //TODO Add test notifications Call here or in the foreach above. use SendLocalNotification to send message.

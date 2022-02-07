@@ -18,5 +18,7 @@ namespace NhsDemoApp.Models
         public string Organisation { get; set; }
         public TimeSpan CurrentTime { get; set; }
         public int SecurityPin { get; set; }
+        public string OnSiteID { get;set; }
+
     }
 }

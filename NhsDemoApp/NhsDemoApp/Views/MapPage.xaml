@@ -15,6 +15,8 @@
           AbsoluteLayout.LayoutFlags="PositionProportional"/>
         <ContentView Content="{Binding ClearButton}" AbsoluteLayout.LayoutBounds="0, 0.95, 70, 70"
           AbsoluteLayout.LayoutFlags="PositionProportional"/>
+        <ContentView Content="{Binding OnSiteButton}" AbsoluteLayout.LayoutBounds="1, 0.95, 70, 70"
+          AbsoluteLayout.LayoutFlags="PositionProportional"/>
         <ContentView InputTransparent="True" Content="{Binding CrossHair}" AbsoluteLayout.LayoutBounds="0.5, 0.5, 70, 70"
           AbsoluteLayout.LayoutFlags="PositionProportional"/>
     </AbsoluteLayout>

@@ -105,7 +105,7 @@
                             </Label>
                             <Switch x:Name="IsCompletedSwitch" Grid.Column="2" IsToggled ="{Binding IsCompleted, Mode=TwoWay}" HorizontalOptions="Center" Margin="1">
                             </Switch>
-                            <CheckBox Grid.Column="3" IsChecked ="{Binding OnSite}" HorizontalOptions="Center" Margin="1">
+                            <CheckBox Grid.Column="3" IsChecked ="{Binding OnSite}" IsEnabled="False" HorizontalOptions="Center" Margin="1">
                             </CheckBox>
                         </Grid>
                     </ViewCell>

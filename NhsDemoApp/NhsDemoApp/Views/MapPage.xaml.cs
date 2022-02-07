@@ -18,6 +18,5 @@ namespace NhsDemoApp.Views
 			BindingContext = new MapPageViewModel();
 			InitializeComponent();
 		}
-
 	}
 }

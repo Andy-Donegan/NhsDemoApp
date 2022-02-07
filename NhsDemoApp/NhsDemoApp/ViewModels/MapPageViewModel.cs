@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.Threading;
 using Xamarin.Forms.BetterMaps;
+using System.Linq;
 
 namespace NhsDemoApp.ViewModels
 {
@@ -20,12 +21,12 @@ namespace NhsDemoApp.ViewModels
         public Button ContactLocationButton { get; set; }
         public Button ClearButton { get; set; }
         public Button MyLocationButton { get; set; }
-        public Button ZoomInButton { get; set; }
-        public Button ZoomOutButton { get; set; }
+        public Button OnSiteButton { get; set; }
         public Image CrossHair { get; set; }
         public Appointment Appointment { get; set; }
         public Xamarin.Essentials.Location LastKnownLocation { get; set; }
         public UserSettings UserSettings { get; set; }
+        public bool FirstLoad { get; set; }
 
         public string AppointmentId
         {
@@ -46,7 +47,7 @@ namespace NhsDemoApp.ViewModels
             {
                 // failed create new location positions. ToDo.
             }
-            
+
             try
             {
                 Appointment = await DataStoreAppointment.GetAppointmentAsync(Id);
@@ -57,16 +58,27 @@ namespace NhsDemoApp.ViewModels
             }
             finally
             {
-                if(Appointment.Latitude != 0 && Appointment.Longitude != 0)
+                UserSettings = await DataStoreUserSettings.GetUserSettingsAsync();
+                if (Appointment.Latitude != 0 && Appointment.Longitude != 0)
                 {
                     AddContactLocationPin(Appointment.Latitude, Appointment.Longitude);
                 }
+
                 UpdateMap(LastKnownLocation.Latitude, LastKnownLocation.Longitude);
+                if (Appointment.OnSite == true)
+                {
+                    OnSiteButton.Text = "Leave\nsite";
+                }
+                else
+                {
+                    OnSiteButton.Text = "On\nSite";
+                }
             }
         }
 
         public MapPageViewModel()
         {
+            FirstLoad = true;
             Title = "Map Page";
             LastKnownLocation = new Xamarin.Essentials.Location();
             UserLocationPin = new Pin();
@@ -108,7 +120,7 @@ namespace NhsDemoApp.ViewModels
             {
                 await App.Current.MainPage.DisplayAlert("Alert", "Something else Happened", "OK");
                 // Unable to get location
-            }
+            }   
             return true;
         }
 
@@ -127,7 +139,6 @@ namespace NhsDemoApp.ViewModels
 
         public void CreateMap()
         {
-
             MyMap = new Map
             {
                 MapType = MapType.Hybrid,
@@ -141,9 +152,10 @@ namespace NhsDemoApp.ViewModels
         {
             ContactLocationButton = new Button
             {
-                CornerRadius = 50,
+                CornerRadius = 35,
                 FontSize = 8,
-                Text = "Contact"
+                Padding = 0,
+                Text = "Add\nContact\nLocation"
             };
             ContactLocationButton.Clicked += AddContactLocation;
 
@@ -151,7 +163,8 @@ namespace NhsDemoApp.ViewModels
             {
                 CornerRadius = 35,
                 FontSize = 8,
-                ImageSource = "icon_about"
+                Padding = 0,
+                Text = "Clear\nContact\nLocation"
             };
             ClearButton.Clicked += RemoveContactLocationPin;
 
@@ -159,9 +172,18 @@ namespace NhsDemoApp.ViewModels
             {
                 CornerRadius = 35,
                 FontSize = 8,
-                Text = "Me"
+                Padding = 0,
+                Text = "My\nLocation"
             };
             MyLocationButton.Clicked += MoveMapToUserLocation;
+
+            OnSiteButton = new Button
+            {
+                CornerRadius = 35,
+                Padding = 0,
+                FontSize = 8
+            };
+            OnSiteButton.Clicked += RegisterUserAtSite;
 
             CrossHair = new Image
             {
@@ -169,26 +191,37 @@ namespace NhsDemoApp.ViewModels
             };
         }
 
-        async void RemoveContactLocationPin(object sender, EventArgs e)
+        async void RegisterUserAtSite(object sender, EventArgs e)
         {
             var pinCheck = await SecurityCheck();
             if (pinCheck == false)
             {
                 return;
             }
+            if (Appointment.OnSite == false)
+            {
+                Appointment.OnSite = true;
+                OnSiteButton.Text = "Leave\nSite";
+                UserSettings.OnSiteID = Appointment.Id;
+            }
+            else
+            {
+                Appointment.OnSite = false;
+                OnSiteButton.Text = "On\nSite";
+                UserSettings.OnSiteID = "";
+            }
+        }
+
+        void RemoveContactLocationPin(object sender, EventArgs e)
+        {
             Appointment.Latitude = 0;
             Appointment.Longitude = 0;
 
             RemovePin(ContactLocationPin);
         }
 
-        async void AddContactLocation(object sender, EventArgs e)
+        void AddContactLocation(object sender, EventArgs e)
         {
-            var pinCheck = await SecurityCheck();
-            if (pinCheck == false)
-            {
-                return;
-            }
             double latitude = MyMap.VisibleRegion.Center.Latitude;
             double longitude = MyMap.VisibleRegion.Center.Longitude;
 
@@ -200,8 +233,6 @@ namespace NhsDemoApp.ViewModels
 
         async Task<bool> SecurityCheck()
         {
-            UserSettings = await DataStoreUserSettings.GetUserSettingsAsync();
-
             string result = await App.Current.MainPage.DisplayPromptAsync("Security Check", "Please enter your 4 digit security pin.", cancel: "Cancel", accept: "Ok", maxLength: 4, keyboard: Keyboard.Numeric);
             
             if (result != UserSettings.SecurityPin.ToString())
@@ -214,7 +245,7 @@ namespace NhsDemoApp.ViewModels
 
         async void MoveMapToUserLocation(object sender, EventArgs e)
         {
-            var test = await GetLastKnownLocation();
+            await GetLastKnownLocation();
 
             UpdateMap(LastKnownLocation.Latitude, LastKnownLocation.Longitude);
         }
@@ -224,7 +255,7 @@ namespace NhsDemoApp.ViewModels
             UpdateMap(e.Position.Latitude, e.Position.Longitude);
         }
 
-        public void UpdateMap(double latitude, double longitude)
+        async void UpdateMap(double latitude, double longitude)
         {
             double distance;
             Position position = new Position(latitude, longitude);
@@ -237,10 +268,18 @@ namespace NhsDemoApp.ViewModels
                 distance = 0.40;
             }
 
-
             MapSpan mapSpan = MapSpan.FromCenterAndRadius(position, Distance.FromKilometers(distance));
-
-            MyMap.MoveToRegion(mapSpan);
+            if(FirstLoad == false)
+            {
+                MyMap.MoveToRegion(mapSpan);
+            }
+            else
+            {
+                FirstLoad = false;
+                await Task.Delay(300);
+                MyMap.MoveToRegion(mapSpan);
+            }
+ 
         }
 
         public void RemovePin(Pin pinName)
@@ -248,15 +287,42 @@ namespace NhsDemoApp.ViewModels
             MyMap.Pins.Remove(pinName);
         }
 
-        public void AddContactLocationPin(double latitude, double longitude)
+        async void AddContactLocationPin(double latitude, double longitude)
         {
+            
             RemovePin(ContactLocationPin);
             ContactLocationPin = new Pin
             {
                 Position = new Position(latitude, longitude),
+                Address = await ReverseGeocodeAddress(latitude, longitude),
                 Label = Appointment.Contact
             };
             MyMap.Pins.Add(ContactLocationPin);
+        }
+
+        async Task<string> ReverseGeocodeAddress(double latitude, double longitude)
+        {
+            try
+            {
+
+                var placemarks = await Xamarin.Essentials.Geocoding.GetPlacemarksAsync(latitude, longitude);
+
+                var placemark = placemarks?.FirstOrDefault();
+                if (placemark != null)
+                {
+                    var geocodeAddress = placemark.FeatureName + "," + placemark.Thoroughfare + "\n" + placemark.SubAdminArea + " , " + placemark.PostalCode;
+                    return geocodeAddress;
+                }
+            }
+            catch (Xamarin.Essentials.FeatureNotSupportedException fnsEx)
+            {
+                // Feature not supported on device
+            }
+            catch (Exception ex)
+            {
+                // Handle exception that may have occurred in geocoding
+            }
+            return "";
         }
     }
 }

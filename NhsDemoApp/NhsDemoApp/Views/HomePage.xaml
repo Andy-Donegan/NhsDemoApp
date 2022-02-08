@@ -8,8 +8,8 @@
 
     <RefreshView x:DataType="vm:HomeViewModel" Command="{Binding LoadUserSettings}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         <ScrollView>
-        <StackLayout Orientation="Vertical" Padding="30,0,30,24">
-            <StackLayout  HorizontalOptions="Fill">
+            <StackLayout Padding="30,0,30,24" Orientation="Vertical" >
+                <StackLayout HorizontalOptions="Fill">
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
                     <ContentView Padding="0,10,0,00" VerticalOptions="FillAndExpand">
                         <Image Source="NhsSplashScreen.png" VerticalOptions="Center" HeightRequest="100" />
@@ -27,7 +27,7 @@
                 <Entry Text="{Binding SecurityPin}" MaxLength="4" FontSize="13"/>
                 <Label Text="App Time:" FontSize="13" TextColor="#005EB8"/>
             <TimePicker Time="{Binding CurrentTime}" Format="t" FontSize="13"/>
-        </StackLayout>
+            </StackLayout>
         </ScrollView>
     </RefreshView>
 </ContentPage>

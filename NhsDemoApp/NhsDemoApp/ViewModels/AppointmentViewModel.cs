@@ -21,7 +21,6 @@ namespace NhsDemoApp.ViewModels
         public Command LoadAppointmentsCommand { get; }
         public Command<Appointment> AppointmentTapped { get; }
         public Command LoadMap { get; }
-        public Command RoastWillow { get; }
         public UserSettings UserSettings { get; set; }
 
         public AppointmentViewModel()
@@ -36,6 +35,82 @@ namespace NhsDemoApp.ViewModels
             excelService = new ExcelService();
 
             LoadMap = new Command<Appointment>(OnLoadMap);
+
+            Device.StartTimer(TimeSpan.FromSeconds(10.0), TimerElapsed);
+        }
+
+        bool TimerElapsed()
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                var lateCount = 0;
+                var noTimesEnteredCount = 0;
+                foreach (Appointment appointment in Appointments)
+                {
+                    if (appointment.DueTime.TimeOfDay < UserSettings.CurrentTime)
+                    {
+                        if(appointment.ArrivalTime is null || appointment.DepartureTime is null)
+                        {
+                            noTimesEnteredCount++;
+                        }
+                        if(appointment.IsCompleted != true)
+                        {
+                            lateCount++;
+                        }
+                        var test = UserSettings.CurrentTime - appointment.DueTime.TimeOfDay;
+                        if (test.Hours >= 3)
+                        {
+                            _ = SendLocalNotification(102, "Safety Check", "Please call in to Supervisor.");
+                        }
+                    }
+                }
+                if (lateCount > 1)
+                {
+                    _ = SendLocalNotification(100, "Late Appointments", "You have " + lateCount.ToString() + " late appointments");
+                }
+                else if(lateCount == 1)
+                {
+                    _ = SendLocalNotification(100, "Late Appointment", "You have " + lateCount.ToString() + " late appointment");
+                }
+                if(noTimesEnteredCount > 1)
+                {
+                    _ = SendLocalNotification(101, "Appointment Times", "You have " + noTimesEnteredCount.ToString() + " which are missing times");
+                }
+                else if(noTimesEnteredCount == 1)
+                {
+                    _ = SendLocalNotification(101, "Appointment Times", "You have " + noTimesEnteredCount.ToString() + " which is missing times");
+                }
+            });
+            return true; //to keep timer reccurring
+        }
+
+        async Task SendLocalNotification(int id,string title, string description)
+        {
+
+            var notification = new NotificationRequest
+            {
+                NotificationId = id,
+                Title = title,
+                Description = description,
+                BadgeNumber = 5,
+                ReturningData = "empty",
+                //Schedule =
+                //{
+                //    NotifyTime = DateTime.Now.AddSeconds(1) // Used for Scheduling local notification, if not specified notification will show immediately.
+                //},
+                Android =
+                {
+                    IconSmallName =
+                    {
+                        ResourceName = "icon_home",
+                    },
+                    Color =
+                    {
+                        ResourceName = "colorPrimary"
+                    }
+                }
+            };
+            await NotificationCenter.Current.Show(notification);
         }
 
         private async void OnLoadMap(Appointment appointment)
@@ -113,36 +188,6 @@ namespace NhsDemoApp.ViewModels
             {
                 IsBusy = false;
             }
-        }
-
-        async Task SendLocalNotification()
-        {
-            //TODO sort timers etc for Notifications.
-            var notification = new NotificationRequest
-            {
-                NotificationId = 100,
-                Title = "Title",
-                Subtitle = "Subtitle",
-                Description = "Description",
-                BadgeNumber = 5,
-                ReturningData = "100",
-                Schedule =
-                {
-                    NotifyTime = DateTime.Now.AddSeconds(10) // Used for Scheduling local notification, if not specified notification will show immediately.
-                },
-                Android =
-                {
-                    IconSmallName =
-                    {
-                        ResourceName = "icon_home",
-                    },
-                    Color =
-                    {
-                        ResourceName = "colorPrimary"
-                    }
-                }
-            };
-            await NotificationCenter.Current.Show(notification);
         }
 
         public void OnAppearing()

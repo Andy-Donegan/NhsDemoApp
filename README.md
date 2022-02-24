@@ -30,7 +30,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/Andy-Donegan/NhsDemoApp">
-    <img src="AppScreenShots/logo.png" alt="Logo" width="80" height="80">
+    <img src="AppScreenShots/logo.png" alt="Logo" height="80">
   </a>
 
 <h3 align="center">Nhs Mobile App Demo (Android Only)</h3>

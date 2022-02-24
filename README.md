@@ -194,7 +194,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Andy Donegan - [@twitter_handle](https://twitter.com/twitter_handle) - andy_donegan@hotmail.co.uk
+Andy Donegan - andy_donegan@hotmail.co.uk
 
 Project Link: [https://github.com/Andy-Donegan/NhsDemoApp](https://github.com/Andy-Donegan/NhsDemoApp)
 
@@ -205,11 +205,12 @@ Project Link: [https://github.com/Andy-Donegan/NhsDemoApp](https://github.com/An
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
+* [Xamarin Local Notifications Plugin](https://github.com/thudugala/Plugin.LocalNotification)
+* [Xamarin Forms Better Maps](https://github.com/dmariogatto/Xamarin.Forms.BetterMaps)
 * [Choose an Open Source License](https://choosealicense.com)
 * [Img Shields](https://shields.io)
 * [Font Awesome](https://fontawesome.com)
-* [OthNeil Drew](https://github.com/othneildrew/Best-README-Template)
+* [OthNeil Drew(this readme template)](https://github.com/othneildrew/Best-README-Template)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

@@ -226,5 +226,5 @@ Project Link: [https://github.com/Andy-Donegan/NhsDemoApp](https://github.com/An
 [license-shield]: https://img.shields.io/github/license/Andy-Donegan/NhsDemoApp.svg?style=for-the-badge
 [license-url]: https://github.com/Andy-Donegan/NhsDemoApp/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
+[linkedin-url]: https://stackoverflow.com/users/4043829/andy-donegan
 [product-screenshot]: images/screenshot.png

@@ -29,23 +29,23 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/Andy-Donegan/NhsWebDemo">
+  <a href="https://github.com/Andy-Donegan/NhsDemoApp">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">project_title</h3>
+<h3 align="center">Nhs Mobile App Demo (Android Only)</h3>
 
   <p align="center">
-    project_description
+    Great write up about App and what it does etc blah blah
     <br />
-    <a href="https://github.com/Andy-Donegan/NhsWebDemo"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/Andy-Donegan/NhsDemoApp"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/Andy-Donegan/NhsWebDemoe">View Demo</a>
+    <a href="https://github.com/Andy-Donegan/NhsDemoApp">View Demo</a>
     ·
-    <a href="https://github.com/Andy-Donegan/NhsWebDemo/issues">Report Bug</a>
+    <a href="https://github.com/Andy-Donegan/NhsDemoApp/issues">Report Bug</a>
     ·
-    <a href="https://github.com/Andy-Donegan/NhsWebDemo/issues">Request Feature</a>
+    <a href="https://github.com/Andy-Donegan/NhsDemoApp/issues">Request Feature</a>
   </p>
 </div>
 
@@ -84,7 +84,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `Andy-Donegan`, `NhsWebDemo`, `twitter_handle`, `linkedin_username`, `hotmail`, `andy_donegan`, `project_title`, `project_description`
+Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `Andy-Donegan`, `NhsDemoApp`, `twitter_handle`, `linkedin_username`, `hotmail`, `andy_donegan`, `project_title`, `project_description`
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -124,7 +124,7 @@ This is an example of how to list things you need to use the software and how to
 1. Get a free API Key at [https://example.com](https://example.com)
 2. Clone the repo
    ```sh
-   git clone https://github.com/Andy-Donegan/NhsWebDemo.git
+   git clone https://github.com/Andy-Donegan/NhsDemoApp.git
    ```
 3. Install NPM packages
    ```sh
@@ -158,7 +158,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [ ] Feature 3
     - [ ] Nested Feature
 
-See the [open issues](https://github.com/Andy-Donegan/NhsWebDemo/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/Andy-Donegan/NhsDemoApp/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -196,7 +196,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Andy Donegan - [@twitter_handle](https://twitter.com/twitter_handle) - andy_donegan@hotmail.co.uk
 
-Project Link: [https://github.com/Andy-Donegan/NhsWebDemo](https://github.com/Andy-Donegan/NhsWebDemo)
+Project Link: [https://github.com/Andy-Donegan/NhsDemoApp](https://github.com/Andy-Donegan/NhsDemoApp)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -215,16 +215,16 @@ Project Link: [https://github.com/Andy-Donegan/NhsWebDemo](https://github.com/An
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/Andy-Donegan/NhsWebDemo.svg?style=for-the-badge
-[contributors-url]: https://github.com/Andy-Donegan/NhsWebDemo/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/Andy-Donegan/NhsWebDemo.svg?style=for-the-badge
-[forks-url]: https://github.com/Andy-Donegan/NhsWebDemo/network/members
-[stars-shield]: https://img.shields.io/github/stars/Andy-Donegan/NhsWebDemo.svg?style=for-the-badge
-[stars-url]: https://github.com/Andy-Donegan/NhsWebDemo/stargazers
-[issues-shield]: https://img.shields.io/github/issues/Andy-Donegan/NhsWebDemo.svg?style=for-the-badge
-[issues-url]: https://github.com/Andy-Donegan/NhsWebDemo/issues
-[license-shield]: https://img.shields.io/github/license/Andy-Donegan/NhsWebDemo.svg?style=for-the-badge
-[license-url]: https://github.com/Andy-Donegan/NhsWebDemo/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/Andy-Donegan/NhsDemoApp.svg?style=for-the-badge
+[contributors-url]: https://github.com/Andy-Donegan/NhsDemoApp/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Andy-Donegan/NhsDemoApp.svg?style=for-the-badge
+[forks-url]: https://github.com/Andy-Donegan/NhsDemoApp/network/members
+[stars-shield]: https://img.shields.io/github/stars/Andy-Donegan/NhsDemoApp.svg?style=for-the-badge
+[stars-url]: https://github.com/Andy-Donegan/NhsDemoApp/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Andy-Donegan/NhsDemoApp.svg?style=for-the-badge
+[issues-url]: https://github.com/Andy-Donegan/NhsDemoApp/issues
+[license-shield]: https://img.shields.io/github/license/Andy-Donegan/NhsDemoApp.svg?style=for-the-badge
+[license-url]: https://github.com/Andy-Donegan/NhsDemoApp/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: images/screenshot.png

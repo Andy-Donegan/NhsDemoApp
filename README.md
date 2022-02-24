@@ -206,8 +206,10 @@ Project Link: [https://github.com/Andy-Donegan/NhsDemoApp](https://github.com/An
 ## Acknowledgments
 
 * []()
-* []()
-* []()
+* [Choose an Open Source License](https://choosealicense.com)
+* [Img Shields](https://shields.io)
+* [Font Awesome](https://fontawesome.com)
+* [OthNeil Drew](https://github.com/othneildrew/Best-README-Template)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

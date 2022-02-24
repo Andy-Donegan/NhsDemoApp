@@ -22,7 +22,7 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+[![Stackoverflow][stackoverflow-shield]][stackoverflow-url]
 
 
 
@@ -225,6 +225,6 @@ Project Link: [https://github.com/Andy-Donegan/NhsDemoApp](https://github.com/An
 [issues-url]: https://github.com/Andy-Donegan/NhsDemoApp/issues
 [license-shield]: https://img.shields.io/github/license/Andy-Donegan/NhsDemoApp.svg?style=for-the-badge
 [license-url]: https://github.com/Andy-Donegan/NhsDemoApp/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://stackoverflow.com/users/4043829/andy-donegan
+[stackoverflow-shield]: https://img.shields.io/badge/SO-STACKOVERFLOW-lightgrey
+[stackoverflow-url]: https://stackoverflow.com/users/4043829/andy-donegan
 [product-screenshot]: images/screenshot.png

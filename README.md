@@ -144,7 +144,8 @@ This is an example of how to list things you need to use the software and how to
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+Add Images here to show off stuff etc.
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -153,12 +154,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
-
-See the [open issues](https://github.com/Andy-Donegan/NhsDemoApp/issues) for a full list of proposed features (and known issues).
+- There is no roadmap this simple demo is complete and will not receive any future updates.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -167,16 +163,9 @@ See the [open issues](https://github.com/Andy-Donegan/NhsDemoApp/issues) for a f
 <!-- CONTRIBUTING -->
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions are what make the open source community such an amazing place to learn, inspire, and create, but this project is solely something I developed to help myself get back into programming.
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+You are free to do what ever with this project etc, but take it and do what you will within your own Repo.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

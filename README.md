@@ -225,7 +225,7 @@ Project Link: [https://github.com/Andy-Donegan/NhsDemoApp](https://github.com/An
 [issues-url]: https://github.com/Andy-Donegan/NhsDemoApp/issues
 [license-shield]: https://img.shields.io/github/license/Andy-Donegan/NhsDemoApp.svg?style=for-the-badge
 [license-url]: https://github.com/Andy-Donegan/NhsDemoApp/LICENSE.txt
-[stackoverflow-shield]: https://img.shields.io/github/stackoverflow/Andy-Donegan/NhsDemoApp.svg?style=for-the-badge
+[stackoverflow-shield]: https://img.shields.io/github/badge/Andy-Donegan/NhsDemoApp.svg?style=SO-STACKOVERFLOW-lightgrey
 [stackoverflow-url]: https://stackoverflow.com/users/4043829/andy-donegan
 [product-screenshot]: images/screenshot.png
 

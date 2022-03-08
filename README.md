@@ -149,26 +149,26 @@ Add Images here to show off stuff etc.
     <img Title="Home Page" src="AppScreenShots/home.jpg" alt="Home Page" width="200">
   </a>
     <a href="https://github.com/Andy-Donegan/NhsDemoApp">
-    <img src="AppScreenShots/appointments.jpg" alt="Diary Page" width="200">
+    <img Title="Diary/Appointments Page" src="AppScreenShots/appointments.jpg" alt="Diary Page" width="200">
   </a>
     <a href="https://github.com/Andy-Donegan/NhsDemoApp">
-    <img src="AppScreenShots/details.jpg" alt="Appointment Details Page" width="200">
+    <img Title="Appointment Details Page" src="AppScreenShots/details.jpg" alt="Appointment Details Page" width="200">
   </a>
     </a>
     <a href="https://github.com/Andy-Donegan/NhsDemoApp">
-    <img src="AppScreenShots/map.jpg" alt="Map Page" width="200">
+    <img Title="Map Page" src="AppScreenShots/map.jpg" alt="Map Page" width="200">
   </a>
     </a>
     <a href="https://github.com/Andy-Donegan/NhsDemoApp">
-    <img src="AppScreenShots/security.jpg" alt="Security Check" width="200">
+    <img Title="Security Check" src="AppScreenShots/security.jpg" alt="Security Check" width="200">
   </a>
   </a>
     <a href="https://github.com/Andy-Donegan/NhsDemoApp">
-    <img src="AppScreenShots/about.jpg" alt="About Page" width="200">
+    <img Title="About Page" src="AppScreenShots/about.jpg" alt="About Page" width="200">
   </a>
   </a>
     <a href="https://github.com/Andy-Donegan/NhsDemoApp">
-    <img src="AppScreenShots/lockscreen.jpg" alt="Android Notifications" width="200">
+    <img Title="Android Notifications" src="AppScreenShots/lockscreen.jpg" alt="Android Notifications" width="200">
   </a>
 </div>
 

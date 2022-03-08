@@ -214,5 +214,5 @@ Project Link: [https://github.com/Andy-Donegan/NhsDemoApp](https://github.com/An
 [license-url]: https://github.com/Andy-Donegan/NhsDemoApp/LICENSE.txt
 [stackoverflow-shield]: https://img.shields.io/badge/SO-STACKOVERFLOW-lightgrey.svg?style=for-the-badge
 [stackoverflow-url]: https://stackoverflow.com/users/4043829/andy-donegan
-[product-screenshot]: ~/AppScreenShots/map.png
+[product-screenshot]: https://github.com/Andy-Donegan/NhsDemoApp/AppScreenShots/map.png
 

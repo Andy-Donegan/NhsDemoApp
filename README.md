@@ -41,11 +41,6 @@
     <a href="https://github.com/Andy-Donegan/NhsDemoApp"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/Andy-Donegan/NhsDemoApp">View Demo</a>
-    ·
-    <a href="https://github.com/Andy-Donegan/NhsDemoApp/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/Andy-Donegan/NhsDemoApp/issues">Request Feature</a>
   </p>
 </div>
 
@@ -219,5 +214,5 @@ Project Link: [https://github.com/Andy-Donegan/NhsDemoApp](https://github.com/An
 [license-url]: https://github.com/Andy-Donegan/NhsDemoApp/LICENSE.txt
 [stackoverflow-shield]: https://img.shields.io/badge/SO-STACKOVERFLOW-lightgrey.svg?style=for-the-badge
 [stackoverflow-url]: https://stackoverflow.com/users/4043829/andy-donegan
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: AppScreenShots/map.png
 

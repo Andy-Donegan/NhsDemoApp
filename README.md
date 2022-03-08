@@ -76,7 +76,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
+<br />
 <div align="center">
   <a href="https://github.com/Andy-Donegan/NhsDemoApp">
     <img src="AppScreenShots/map.jpg" alt="map screen shot" height="200">

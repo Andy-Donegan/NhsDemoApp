@@ -146,7 +146,7 @@ Use this space to show useful examples of how a project can be used. Additional 
 Add Images here to show off stuff etc.
 <div align="center">
   <a href="https://github.com/Andy-Donegan/NhsDemoApp">
-    <img src="AppScreenShots/home.jpg" alt="Home Page" width="200">
+    <img Title="Home Page" src="AppScreenShots/home.jpg" alt="Home Page" width="200">
   </a>
     <a href="https://github.com/Andy-Donegan/NhsDemoApp">
     <img src="AppScreenShots/appointments.jpg" alt="Diary Page" width="200">

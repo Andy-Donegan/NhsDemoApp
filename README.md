@@ -154,6 +154,22 @@ Add Images here to show off stuff etc.
     <a href="https://github.com/Andy-Donegan/NhsDemoApp">
     <img src="AppScreenShots/details.jpg" alt="Appointment Details Page" width="200">
   </a>
+    </a>
+    <a href="https://github.com/Andy-Donegan/NhsDemoApp">
+    <img src="AppScreenShots/map.jpg" alt="Map Page" width="200">
+  </a>
+    </a>
+    <a href="https://github.com/Andy-Donegan/NhsDemoApp">
+    <img src="AppScreenShots/security.jpg" alt="Security Check" width="200">
+  </a>
+  </a>
+    <a href="https://github.com/Andy-Donegan/NhsDemoApp">
+    <img src="AppScreenShots/about.jpg" alt="About Page" width="200">
+  </a>
+  </a>
+    <a href="https://github.com/Andy-Donegan/NhsDemoApp">
+    <img src="AppScreenShots/lockscreen.jpg" alt="Android Notifications" width="200">
+  </a>
 </div>
 
 <p align="right">(<a href="#top">back to top</a>)</p>

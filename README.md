@@ -77,6 +77,12 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
+<div align="center">
+  <a href="https://github.com/Andy-Donegan/NhsDemoApp">
+    <img src="AppScreenShots/map.jpg" alt="map screen shot" height="200">
+  </a>
+</div>
+
 [![Product Name Screen Shot][product-screenshot]](https://github.com/Andy-Donegan/NhsDemoApp)
 
 Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `Andy-Donegan`, `NhsDemoApp`, `twitter_handle`, `linkedin_username`, `hotmail`, `andy_donegan`, `project_title`, `project_description`

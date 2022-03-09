@@ -148,7 +148,7 @@ To get a local copy up and running follow these simple example steps.
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-Read the about page in the app for a basic run through of how to operate the app.
+Read the [About Page](https://github.com/Andy-Donegan/NhsDemoApp/blob/master/NhsDemoApp/NhsDemoApp/Views/AboutPage.xaml) in the app for a basic run through of how to operate the app.
 
 <div align="center">
   <a href="https://github.com/Andy-Donegan/NhsDemoApp">

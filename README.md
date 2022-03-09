@@ -83,7 +83,15 @@
   </a>
 </div>
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `Andy-Donegan`, `NhsDemoApp`, `twitter_handle`, `linkedin_username`, `hotmail`, `andy_donegan`, `project_title`, `project_description`
+This began as a small project for myself whilst recovering from long term illness and to get myself back into programming. From discussion with an NHS health care worker regarding my previous job as a programmer they asked about an App to assist with lone worker safety and the current systems that they have in place. I took it upon myself to use this idea to produce a small demo to get myself into Xamarin and back to programming in C#, my previous cross mobile application (Swift Command) was written with Apache Cordova and was Html/Css/Javascript and Jquery with multiple plugins.
+
+This demo is fully functioning it requires a network connection for gps positioning etc, all data within the App is saved on the device nothing is transmitted to remote servers.
+
+The App is basically a diary with the ability to update appointments with the touch of a button, then add on site times and leaving times. A double tap of the appointment opens the map screen and the ability to add a marker for the current appointment location and also an onsite button which will updated which appointment is currently being attended.
+
+The aim of the App is just to show how something like this can be stream lined to a couple of screens, there is much more required for this to be a good demo, but it was just a project to get myself producing code.
+
+The project also has a demo Web admin/dashboard to allow overview and deal with escalations and reporting of data collected from the App this can be found here <a href="https://github.com/Andy-Donegan/NhsWebDemo">NHS Web Demo</a>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

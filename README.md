@@ -137,7 +137,7 @@ This is an example of how to list things you need to use the software and how to
    npm install
    ```
 4. Create new 'secrets.xml' file in NhsDemoApp.Android/Resources/values and paste the following code.
-   ```c#
+   ```xml
    <?xml version="1.0" encoding="utf-8" ?>
         <resources>
 	        <string name="google_maps_api_key">Your_google_maps_API_Key_here</string>

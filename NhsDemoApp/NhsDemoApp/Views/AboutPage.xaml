@@ -34,14 +34,16 @@
                 <Label Text="-Change username and organisation so any changes will be saved against that user." FontSize="13" Padding="0,0,0,0"/>
                 <Label Text="-Change App Time to show changes on Appointments Page for late/expired appointments and trigger events." FontSize="13" Padding="0,0,0,0"/>
                 <Label Text="Appointments Page" FontSize="Subtitle" HorizontalOptions="Center" TextColor="#005EB8"/>
-                <Label Text="-Tap appointment to got to that Appointment Details Page and update arrival/departure times." FontSize="13" Padding="0,0,0,0"/>
+                <Label Text="-Single tap appointment to go to that Appointment Details Page and update arrival/departure times." FontSize="13" Padding="0,0,0,0"/>
+                <Label Text="-Double tap appointment to go to Map Page." FontSize="13" Padding="0,0,0,0"/>
                 <Label Text="-Quick toggle Done to sign off an appointment as complete and stop warnings." FontSize="13" Padding="0,0,0,0"/>
                 <Label Text="-Marking Appointment as complete but not entering any arrival/departure times will leave the contact field green as a reminder to update times." FontSize="13" Padding="0,0,0,0"/>
                 <Label Text="-Due Time field goes red when appointment is past current time to help indicate it will require updating." FontSize="13" Padding="0,0,0,0"/>
                 <Label Text="Appointment Details Page" FontSize="Subtitle" HorizontalOptions="Center" TextColor="#005EB8"/>
                 <Label Text="-Update Arrival/Departure times." FontSize="13" Padding="0,0,0,0"/>
                 <Label Text="Map Page" FontSize="Subtitle" HorizontalOptions="Center" TextColor="#005EB8"/>
-                <Label Text="-To update functionality once Mapping page complete." TextColor="red" FontSize="13" Padding="0,0,0,0"/>
+                <Label Text="Add appointment location." FontSize="13" Padding="0,0,0,0"/>
+                <Label Text="Set current appointment as onsite." FontSize="13" Padding="0,0,0,0"/>
                 <Label FontSize="16" Padding="0,24,0,0">
                     <Label.FormattedText>
                         <FormattedString>

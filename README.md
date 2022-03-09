@@ -89,7 +89,7 @@ This demo is fully functioning it requires a network connection for gps position
 
 The App is basically a diary with the ability to update appointments with the touch of a button, then add on site times and leaving times. A double tap of the appointment opens the map screen and the ability to add a marker for the current appointment location and also an onsite button which will updated which appointment is currently being attended.
 
-The aim of the App is just to show how something like this can be stream lined to a couple of screens, there is much more required for this to be a good demo, but it was just a project to get myself producing code.
+The aim of the App is just to show how something like this can be stream lined to a couple of screens, this has been an ideal project for myself to get back into programming.
 
 The project also has a demo Web admin/dashboard to allow overview and deal with escalations and reporting of data collected from the App this can be found here <a href="https://github.com/Andy-Donegan/NhsWebDemo">NHS Web Demo</a>
 
@@ -114,12 +114,10 @@ The project also has a demo Web admin/dashboard to allow overview and deal with 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
 * npm
   ```sh
   npm install npm@latest -g
@@ -150,10 +148,8 @@ This is an example of how to list things you need to use the software and how to
 
 <!-- USAGE EXAMPLES -->
 ## Usage
+Read the about page in the app for a basic run through of how to operate the app.
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-Add Images here to show off stuff etc.
 <div align="center">
   <a href="https://github.com/Andy-Donegan/NhsDemoApp">
     <img Title="Home Page" src="AppScreenShots/home.jpg" alt="Home Page" width="200">
@@ -197,8 +193,6 @@ Add Images here to show off stuff etc.
 
 <!-- CONTRIBUTING -->
 ## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create, but this project is solely something I developed to help myself get back into programming.
 
 You are free to do what ever with this project etc, but take it and do what you will within your own Repo.
 

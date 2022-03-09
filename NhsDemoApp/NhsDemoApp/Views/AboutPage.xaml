@@ -42,8 +42,8 @@
                 <Label Text="Appointment Details Page" FontSize="Subtitle" HorizontalOptions="Center" TextColor="#005EB8"/>
                 <Label Text="-Update Arrival/Departure times." FontSize="13" Padding="0,0,0,0"/>
                 <Label Text="Map Page" FontSize="Subtitle" HorizontalOptions="Center" TextColor="#005EB8"/>
-                <Label Text="Add appointment location." FontSize="13" Padding="0,0,0,0"/>
-                <Label Text="Set current appointment as onsite." FontSize="13" Padding="0,0,0,0"/>
+                <Label Text="set appointment location to help assist with identifying exact location of user in case of emergency." FontSize="13" Padding="0,0,0,0"/>
+                <Label Text="Set current appointment as you are currently onsite." FontSize="13" Padding="0,0,0,0"/>
                 <Label FontSize="16" Padding="0,24,0,0">
                     <Label.FormattedText>
                         <FormattedString>

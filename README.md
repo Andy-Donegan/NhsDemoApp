@@ -99,14 +99,13 @@ The project also has a demo Web admin/dashboard to allow overview and deal with 
 
 ### Built With
 
-* [Next.js](https://nextjs.org/)
-* [React.js](https://reactjs.org/)
-* [Vue.js](https://vuejs.org/)
-* [Angular](https://angular.io/)
-* [Svelte](https://svelte.dev/)
-* [Laravel](https://laravel.com)
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
+* [Xamarin](https://dotnet.microsoft.com/en-us/apps/xamarin)
+* [Visual Studio 2022](https://visualstudio.microsoft.com/)
+* [MVVM](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/enterprise-application-patterns/mvvm)
+* [Xamarin Forms Maps... but Better](https://dgatto.com/posts/2021/06/xforms-better-maps/)
+* [Plugin.LocalNotification](https://github.com/thudugala/Plugin.LocalNotification)
+* [Google Maps](https://developers.google.com/maps)
+* [Open XML SDK](https://github.com/OfficeDev/Open-XML-SDK)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

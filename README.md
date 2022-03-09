@@ -127,7 +127,7 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
+1. Get a Google Maps API Key at [https://developers.google.com/maps/documentation/embed/get-api-key](https://developers.google.com/maps/documentation/embed/get-api-key)
 2. Clone the repo
    ```sh
    git clone https://github.com/Andy-Donegan/NhsDemoApp.git
@@ -136,9 +136,12 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+4. Create new 'secrets.xml' file in NhsDemoApp.Android/Resources/values and paste the following code.
+   ```c#
+   <?xml version="1.0" encoding="utf-8" ?>
+        <resources>
+	        <string name="google_maps_api_key">Your_google_maps_API_Key_here</string>
+        </resources>
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>

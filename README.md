@@ -36,7 +36,7 @@
 <h3 align="center">Nhs Mobile App Demo (Android Only)</h3>
 
   <p align="center">
-    Great write up about App and what it does etc blah blah
+    Demo App for lone staff location monitoring and reporting to assist with Safety Operating Procedures.
     <br />
     <a href="https://github.com/Andy-Donegan/NhsDemoApp"><strong>Explore the docs »</strong></a>
     <br />
